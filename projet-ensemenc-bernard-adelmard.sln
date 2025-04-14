@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NOM", "NOM.csproj", "{6436DE7B-3258-CA57-27B7-57B079578715}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "projet-ensemenc-bernard-adelmard", "projet-ensemenc-bernard-adelmard.csproj", "{6436DE7B-3258-CA57-27B7-57B079578715}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
