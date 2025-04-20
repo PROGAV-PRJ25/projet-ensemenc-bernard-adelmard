@@ -1,16 +1,16 @@
 public abstract class Plante
 {
     // Nom de la plante
-    public string Nom { get; set; }
+    public string? Nom { get; set; }
 
     // Type : "annuelle", "vivace", etc.
-    public string Type { get; set; }
+    public string? Type { get; set; }
 
     // Saisons de semis possibles (ex : ["Printemps", "Automne"])
-    public List<string> SaisonsSemis { get; set; }
+    public List<string>? SaisonsSemis { get; set; }
 
     // Type de sol préféré (ex : "graveleux", "argileux")
-    public string TerrainPrefere { get; set; }
+    public string? TerrainPrefere { get; set; }
 
     // Espacement recommandé entre les plantes (en mètres)
     public float Espacement { get; set; }
@@ -31,7 +31,7 @@ public abstract class Plante
     public (int Min, int Max) TemperaturePreferee { get; set; }
 
     // Liste des maladies possibles
-    public List<Maladie> MaladiesPossibles { get; set; }
+    //public List<Maladie> MaladiesPossibles { get; set; }
 
     // Espérance de vie en semaines
     public int EsperanceDeVie { get; set; }
@@ -40,11 +40,19 @@ public abstract class Plante
     public int ProductionPotentielle { get; set; }
 
     // État de la plante
-    public string Etat { get; set; } = "Saine"; // Sain, Malade, Morte, Désechée
+    public enum EtatPlante
+    {
+        Saine,
+        Malade,
+        Morte,
+        Desechee
+    }
+
+    public EtatPlante Etat { get; set; } = EtatPlante.Saine;
+
 
     // Pourcentage de croissance actuelle
     public int Croissance { get; set; } = 0;
-
 
     // Méthodes
     public abstract void Pousser();
