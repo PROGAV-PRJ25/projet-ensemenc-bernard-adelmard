@@ -1,28 +1,32 @@
 public class Jeu
 {
     private bool partieEnCours = false;
-    private Menu menu = new Menu();
+    private MenuPrincipal menuPrincipal;
+
+    // Méthodes
+    public Jeu()
+    {
+        menuPrincipal = new MenuPrincipal();
+    }
 
     public void Lancer()
     {
-        menu = new Menu();
-
         while (!partieEnCours)
         {
-            int choix = menu.AfficherMenuPrincipal(); // On récupère la selection du joueur.
+            int choix = menuPrincipal.Afficher();
 
             switch (choix)
             {
-                case 0: // Nouvelle Partie
+                case 0:
                     NouvellePartie();
                     break;
-                case 1: // Charger Partie
+                case 1:
                     ChargerPartie();
                     break;
-                case 2: // Règles du jeu
+                case 2:
                     AfficherRegles();
                     break;
-                case 3: // Quitter
+                case 3:
                     Quitter();
                     break;
                 default:
@@ -44,7 +48,9 @@ public class Jeu
 
     private void ChargerPartie()
     {
-
+        Console.Clear();
+        Console.WriteLine("\n=== Charger Partie ===\n");
+        Console.WriteLine("Fonctionnalité à venir.\n");
     }
 
     private void AfficherRegles()

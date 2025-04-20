@@ -1,40 +1,45 @@
-public class Menu
+public abstract class Menu
 {
-    private string[] optionsPrincipales = { "Nouvelle Partie", "Charger une Partie", "Règles du jeu", "Quitter" };
+    protected string[] options = Array.Empty<string>();
 
-    public int AfficherMenuPrincipal()
+    protected virtual void AfficherOptions(int selection) // Affiche toutes les options avec l'option séléctionnée en évidence
     {
-        int selection = 0; // Selection actuelle dans le menu, pour mettre en évidence
+        for (int i = 0; i < options.Length; i++)
+        {
+            if (i == selection)
+                Console.WriteLine($"> {options[i]} <");
+            else
+                Console.WriteLine($"  {options[i]}");
+        }
+    }
+
+    public virtual int Afficher() // Méthode qui permet de naviguer dans le menu et retourne le choix du joueur
+    {
+        int selection = 0;
         bool choixFait = false;
 
         while (!choixFait)
         {
             Console.Clear();
-            Console.WriteLine("\x1b[3J"); // Suprime l'historique de la console
-            Console.WriteLine("====================================");
-            Console.WriteLine("      🍇 Le Jeu Viticole 🍇        ");
-            Console.WriteLine("====================================\n");
-            Console.WriteLine("Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.\n");
+            AfficherTitre(); // Affichage d'un bandeau
 
-            for (int i = 0; i < optionsPrincipales.Length; i++) // Affihage des différentes options du menu
-            {
-                if (i == selection)
-                    Console.WriteLine($"> {optionsPrincipales[i]} <");
-                else
-                    Console.WriteLine($"  {optionsPrincipales[i]}");
-            }
+            AfficherOptions(selection); // Affichage des options
 
             ConsoleKeyInfo key = Console.ReadKey(true);
 
             if (key.Key == ConsoleKey.UpArrow)
-                selection = (selection - 1 + optionsPrincipales.Length) % optionsPrincipales.Length;
+                selection = (selection - 1 + options.Length) % options.Length;
             else if (key.Key == ConsoleKey.DownArrow)
-                selection = (selection + 1) % optionsPrincipales.Length;
+                selection = (selection + 1) % options.Length;
             else if (key.Key == ConsoleKey.Enter)
                 choixFait = true;
         }
 
-        return selection; 
+        return selection;
+    }
+
+    protected virtual void AfficherTitre()
+    {
+        // Peut être personnalisé dans les sous-classes
     }
 }
-
