@@ -14,6 +14,6 @@ public abstract class Parcelle
 
     public virtual void Afficher()
     {
-
+        Console.WriteLine("🌱​");
     }
 }
