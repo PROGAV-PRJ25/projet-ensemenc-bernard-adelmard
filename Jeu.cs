@@ -1,6 +1,6 @@
 public class Jeu
 {
-    private bool partieEnCours = false;
+    private bool isPartieEnCours = false;
     private MenuPrincipal menuPrincipal;
 
     // Méthodes
@@ -11,7 +11,7 @@ public class Jeu
 
     public void Lancer()
     {
-        while (!partieEnCours)
+        while (!isPartieEnCours)
         {
             int choix = menuPrincipal.Afficher();
 
@@ -43,7 +43,9 @@ public class Jeu
         Console.Clear();
         Console.WriteLine("\n=== Nouvelle Partie ===\n");
         Console.WriteLine("Partie initialisée avec succès !\n");
-        partieEnCours = true;
+        isPartieEnCours = true;
+        Joueur joueur = new Joueur("Nathan");
+        Partie partieEnCours = new Partie(joueur);
     }
 
     private void ChargerPartie()
