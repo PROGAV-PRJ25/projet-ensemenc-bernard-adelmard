@@ -18,7 +18,7 @@ public class AffichageParcelle
         {
             Console.Clear();
             Console.WriteLine($"📍 Parcelle : {parcelle.Nom}");
-            Console.WriteLine("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+            Console.WriteLine("━━━━━━━━━━━");
 
             for (int y = 0; y < lignes; y++)
             {
@@ -33,7 +33,7 @@ public class AffichageParcelle
                 Console.WriteLine();
             }
 
-            Console.WriteLine("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+            Console.WriteLine("━━━━━━━━━━━");
             Console.WriteLine("↑ ↓ pour choisir un rang | Entrée pour valider");
 
             ConsoleKeyInfo key = Console.ReadKey(true);

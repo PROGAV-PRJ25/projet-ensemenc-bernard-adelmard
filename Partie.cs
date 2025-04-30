@@ -1,26 +1,32 @@
 public class Partie
 {
     public Joueur Joueur { get; set; }
-    public List<Parcelle> Parcelles { get; set; } = new();
-    public int Semaine { get; set; } = 1;
+    public List<Parcelle> Parcelles { get; set; } = new(); // Liste des parcelles que le joueur détiens
+    public int Semaine { get; set; } = 1; // Numéro de la semaine en cours
+    public Parcelle? ParcelleEnCours { get; set; }
 
+    // Constructeur
     public Partie(Joueur joueur)
     {
         Joueur = joueur;
-        var parcelle1 = new ParcelleArgileuse("Parcelle 1", 5, 4);
-        Parcelles.Add(parcelle1);
-        parcelle1.Afficher();
+        InitialiserParcelles();
 
     }
 
-    // A mettre autre part mais je ne sais pas encore où
-    private void AfficherParcelleAvecSelection()
+    // Méthodes
+    private void InitialiserParcelles()
     {
-        var affichage = new AffichageParcelle(parcelleEnCours);
+        var parcelle1 = new ParcelleArgileuse("Parcelle 1", 5, 4);
+        Parcelles.Add(parcelle1);
+        ParcelleEnCours = parcelle1;
+
+        var affichage = new AffichageParcelle(ParcelleEnCours!);
         int rang = affichage.AfficherAvecCurseur();
 
         Console.WriteLine($"\nRang sélectionné : {rang + 1}");
     }
+
+
 
 
     public void Suivant()
