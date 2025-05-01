@@ -1,18 +1,32 @@
 public class Jeu
 {
     private bool isPartieEnCours = false;
-    private MenuPrincipal menuPrincipal;
+    private MenuChoix menuPrincipal;
 
     // Méthodes
     public Jeu()
     {
-        menuPrincipal = new MenuPrincipal();
+        // Création du menu avec les options et le titre
+        string titre = @"
+====================================
+      🍇 Le Jeu Viticole 🍇       
+====================================";
+        List<string> options = new List<string>
+            {
+                "Nouvelle Partie",
+                "Charger une Partie",
+                "Règles du jeu",
+                "Quitter"
+            };
+
+        menuPrincipal = new MenuChoix(options, titre);
     }
 
     public void Lancer()
     {
         while (!isPartieEnCours)
         {
+            // Ici on utilise la méthode de la classe menu pour afficher. Cette méthode renvoie un int qui est le choix du joueur.
             int choix = menuPrincipal.Afficher();
 
             switch (choix)

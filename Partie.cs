@@ -9,16 +9,15 @@ public class Partie
     public Partie(Joueur joueur)
     {
         Joueur = joueur;
-        InitialiserParcelles();
-
+        InitialiserParcelles("Parcelle 1");
     }
 
     // Méthodes
-    private void InitialiserParcelles()
+    private void InitialiserParcelles(string nomParcelle)
     {
-        var parcelle1 = new ParcelleArgileuse("Parcelle 1", 5, 4);
-        Parcelles.Add(parcelle1);
-        ParcelleEnCours = parcelle1;
+        var parcelle = new ParcelleArgileuse(nomParcelle, 5, 4);
+        Parcelles.Add(parcelle);
+        ParcelleEnCours = parcelle;
 
         var affichage = new AffichageParcelle(ParcelleEnCours!);
         int rang = affichage.AfficherAvecCurseur();
