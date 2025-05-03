@@ -49,4 +49,8 @@ public class AffichageParcelle
 
         return ligneSelectionnee;
     }
-} 
+    public void AfficherDetailRangee(int y)
+    {
+
+    }
+}
