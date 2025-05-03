@@ -10,7 +10,10 @@ public class Jeu
         string titre = @"
 ====================================
       🍇 Le Jeu Viticole 🍇       
-====================================";
+====================================
+Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
+
+";
         List<string> options = new List<string>
             {
                 "Nouvelle Partie",
@@ -48,8 +51,6 @@ public class Jeu
                     break;
             }
         }
-
-        BouclePrincipale();
     }
 
     private void NouvellePartie()
@@ -82,10 +83,6 @@ public class Jeu
         Environment.Exit(0);
     }
 
-    private void BouclePrincipale()
-    {
-        Console.WriteLine("\nLe jeu commence ! (Boucle principale à implémenter)\n");
-    }
 }
 
 // Test

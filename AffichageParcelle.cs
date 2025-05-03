@@ -24,7 +24,8 @@ public class AffichageParcelle
             {
                 for (int x = 0; x < colonnes; x++)
                 {
-                    Console.Write("🟫"); // à personnaliser plus tard
+                    var cepage = parcelle.MatriceEtat[y, x];
+                    Console.Write(cepage == null ? "🟫" : "🍇");
                 }
 
                 if (y == ligneSelectionnee)
@@ -48,4 +49,4 @@ public class AffichageParcelle
 
         return ligneSelectionnee;
     }
-}
+} 

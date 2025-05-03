@@ -1,4 +1,4 @@
-public abstract class Plante
+public abstract class Cepage
 {
     // Nom de la plante
     public string? Nom { get; set; }
@@ -40,7 +40,7 @@ public abstract class Plante
     public int ProductionPotentielle { get; set; }
 
     // État de la plante
-    public enum EtatPlante
+    public enum EtatCepage
     {
         Saine,
         Malade,
@@ -48,7 +48,7 @@ public abstract class Plante
         Desechee
     }
 
-    public EtatPlante Etat { get; set; } = EtatPlante.Saine;
+    public EtatCepage Etat { get; set; } = EtatCepage.Saine;
 
 
     // Pourcentage de croissance actuelle

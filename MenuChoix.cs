@@ -46,7 +46,5 @@ public class MenuChoix
         {
             Console.WriteLine(titre);
         }
-
-        Console.WriteLine("Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.\n");
     }
 }
