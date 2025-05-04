@@ -1,7 +1,7 @@
 public class AffichageParcelle
 {
     private Parcelle parcelle;
-
+    public MenuChoix? menuAction;
     public AffichageParcelle(Parcelle parcelle)
     {
         this.parcelle = parcelle;
@@ -99,11 +99,6 @@ public class AffichageParcelle
                     else if (cepage.Etat == Cepage.EtatCepage.Morte)
                         Console.Write("❌");
                 }
-                else
-                {
-                    Console.Write("  ");
-                }
-
             }
             Console.WriteLine();
 
@@ -114,16 +109,59 @@ public class AffichageParcelle
             Console.WriteLine();
             Console.WriteLine("← → pour changer de colonne | Backspace pour quitter");
 
+
             ConsoleKeyInfo key = Console.ReadKey(true);
             if (key.Key == ConsoleKey.LeftArrow)
                 colonneSelectionnee = (colonneSelectionnee - 1 + parcelle.Largeur) % parcelle.Largeur;
             else if (key.Key == ConsoleKey.RightArrow)
                 colonneSelectionnee = (colonneSelectionnee + 1) % parcelle.Largeur;
             else if (key.Key == ConsoleKey.Enter)
-                choixFait = true;
-            else if (key.Key == ConsoleKey.Backspace)
-                return; // Quitte AfficherDetailRangee et revient dans la boucle dans Partie.cs
+            {
+                AfficherMenuAction(colonneSelectionnee);
+            }
 
+            else if (key.Key == ConsoleKey.Backspace)
+                choixFait = true; //Quitte AfficherDetailRangee et revient dans la boucle dans Jeu.cs
         }
+
     }
+
+    void AfficherMenuAction(int x)
+    {
+        List<string> options = new List<string>
+    {
+        "Arroser",
+        "Traiter",
+        "Désherber",
+        "Tuer la plante",
+        "Récolter"
+    };
+
+        menuAction = new MenuChoix(options, "Choisissez une action sur la plante :");
+        int action = menuAction.Afficher();
+
+        // 
+        switch (action)
+        {
+            case 0:
+                Console.WriteLine("💧 Vous avez arrosé la plante.");
+                break;
+            case 1:
+                Console.WriteLine("🧪 Traitement appliqué.");
+                break;
+            case 2:
+                Console.WriteLine("🧹 Cepage désherbée.");
+                break;
+            case 3:
+                Console.WriteLine("☠ La plante a été supprimée.");
+                break;
+            case 4:
+                Console.WriteLine("🍇 Récolte effectuée !");
+                break;
+        }
+
+        Console.WriteLine("\nAppuyez sur une touche pour revenir.");
+        Console.ReadKey();
+    }
+
 }

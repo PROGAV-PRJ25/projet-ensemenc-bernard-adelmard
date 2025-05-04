@@ -40,29 +40,25 @@ public class Partie
         if (typeDeParcelle == 0) // Argileuse
             parcelle = new ParcelleArgileuse(nomParcelle, largeur, hauteur);
         else if (typeDeParcelle == 1)
-        {}
-            //parcelle = new ParcelleGraveleuse(nomParcelle, largeur, hauteur); // à créer
+        { }
+        //parcelle = new ParcelleGraveleuse(nomParcelle, largeur, hauteur); // à créer
         else if (typeDeParcelle == 2)
-        {}
-           // parcelle = new ParcelleCalcaire(nomParcelle, largeur, hauteur); // à créer
+        { }
+        // parcelle = new ParcelleCalcaire(nomParcelle, largeur, hauteur); // à créer
 
         if (parcelle != null)
         {
             // Ajout de cépages de test dans la ligne 1
             if (parcelle.Hauteur > 1 && parcelle.Largeur >= 4)
             {
-                parcelle.MatriceEtat[1, 0] = new CepageMerlot { Croissance = 25, Etat = Cepage.EtatCepage.Saine  };
+                parcelle.MatriceEtat[1, 0] = new CepageMerlot { Croissance = 25, Etat = Cepage.EtatCepage.Saine };
                 parcelle.MatriceEtat[1, 1] = new CepageMerlot { Croissance = 50, Etat = Cepage.EtatCepage.Malade };
-                parcelle.MatriceEtat[1, 2] = new CepageMerlot { Croissance = 100, Etat = Cepage.EtatCepage.Morte  };
+                parcelle.MatriceEtat[1, 2] = new CepageMerlot { Croissance = 100, Etat = Cepage.EtatCepage.Morte };
                 parcelle.MatriceEtat[1, 3] = new CepageMerlot { Croissance = 10, Etat = Cepage.EtatCepage.Desechee };
             }
 
             Parcelles.Add(parcelle);
             ParcelleEnCours = parcelle;
-
-            var affichage = new AffichageParcelle(parcelle);
-            int rang = affichage.AfficherAvecCurseur();
-            affichage.AfficherDetailRangee(rang);
         }
     }
 
@@ -71,5 +67,8 @@ public class Partie
     {
         Semaine++;
     }
+
+    public void Planter()
+    { }
 }
 
