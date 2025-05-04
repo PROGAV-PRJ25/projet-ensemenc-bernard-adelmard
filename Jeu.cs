@@ -53,25 +53,32 @@ Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
         }
     }
 
-private void NouvellePartie()
-{
-    Console.Clear();
-    Console.WriteLine("\n=== Nouvelle Partie ===\n");
-    Console.WriteLine("Partie initialisée avec succès !\n");
-    isPartieEnCours = true;
-
-    Joueur joueur = new Joueur("Nathan");
-    Partie partieEnCours = new Partie(joueur);
-
-    // Boucle principale du jeu
-    bool enJeu = true;
-    while (enJeu)
+    private void NouvellePartie()
     {
-        var affichage = new AffichageParcelle(partieEnCours.ParcelleEnCours!);
-        int rang = affichage.AfficherAvecCurseur();
-        affichage.AfficherDetailRangee(rang); // Backspace dans cette méthode = retour
+        Console.Clear();
+        Console.WriteLine("\n=== Nouvelle Partie ===\n");
+        Console.WriteLine("Partie initialisée avec succès !\n");
+        isPartieEnCours = true;
+
+        Joueur joueur = new Joueur("Nathan");
+        Partie partieEnCours = new Partie(joueur);
+
+        // Boucle principale du jeu
+        bool enJeu = true;
+        while (enJeu)
+        {
+            var affichage = new AffichageParcelle(partieEnCours.ParcelleEnCours!);
+            int rang = affichage.AfficherAvecCurseur();
+            int? colonneSelectionnee = affichage.AfficherDetailRangee(rang); // Backspace dans cette méthode = retour
+            if (colonneSelectionnee != null)
+            {
+                int action = affichage.AfficherMenuAction(colonneSelectionnee.Value);
+                Console.WriteLine($"Action {action} séléctionnée");
+                Console.ReadKey();
+            }
+
+        }
     }
-}
 
     private void ChargerPartie()
     {

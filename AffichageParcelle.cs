@@ -51,7 +51,7 @@ public class AffichageParcelle
         return ligneSelectionnee;
     }
 
-    public void AfficherDetailRangee(int y)
+    public int? AfficherDetailRangee(int y)
     {
         Console.Clear();
         int[] tabPalier = new int[] { 100, 75, 50, 25, 0 };
@@ -117,16 +117,16 @@ public class AffichageParcelle
                 colonneSelectionnee = (colonneSelectionnee + 1) % parcelle.Largeur;
             else if (key.Key == ConsoleKey.Enter)
             {
-                AfficherMenuAction(colonneSelectionnee);
+                return colonneSelectionnee;
             }
 
             else if (key.Key == ConsoleKey.Backspace)
                 choixFait = true; //Quitte AfficherDetailRangee et revient dans la boucle dans Jeu.cs
         }
-
+        return null;
     }
 
-    void AfficherMenuAction(int x)
+    public int AfficherMenuAction(int x) // Méthode qui renvoi l'index de l'action, peut être changer pour renvoyer le string directement car la liste pourrait changer de taille
     {
         List<string> options = new List<string>
     {
@@ -138,30 +138,7 @@ public class AffichageParcelle
     };
 
         menuAction = new MenuChoix(options, "Choisissez une action sur la plante :");
-        int action = menuAction.Afficher();
+        return menuAction.Afficher();
 
-        // 
-        switch (action)
-        {
-            case 0:
-                Console.WriteLine("💧 Vous avez arrosé la plante.");
-                break;
-            case 1:
-                Console.WriteLine("🧪 Traitement appliqué.");
-                break;
-            case 2:
-                Console.WriteLine("🧹 Cepage désherbée.");
-                break;
-            case 3:
-                Console.WriteLine("☠ La plante a été supprimée.");
-                break;
-            case 4:
-                Console.WriteLine("🍇 Récolte effectuée !");
-                break;
-        }
-
-        Console.WriteLine("\nAppuyez sur une touche pour revenir.");
-        Console.ReadKey();
     }
-
 }
