@@ -13,9 +13,4 @@ public abstract class Parcelle
         Hauteur = hauteur;
         MatriceEtat = new Cepage?[hauteur, largeur]; // chaque case = un plant ou vide
     }
-
-    public virtual void Afficher()
-    {
-        Console.WriteLine("🌱​");
-    }
 }
