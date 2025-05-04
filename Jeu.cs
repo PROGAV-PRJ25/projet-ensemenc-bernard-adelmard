@@ -53,15 +53,25 @@ Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
         }
     }
 
-    private void NouvellePartie()
+private void NouvellePartie()
+{
+    Console.Clear();
+    Console.WriteLine("\n=== Nouvelle Partie ===\n");
+    Console.WriteLine("Partie initialisée avec succès !\n");
+    isPartieEnCours = true;
+
+    Joueur joueur = new Joueur("Nathan");
+    Partie partieEnCours = new Partie(joueur);
+
+    // Boucle principale du jeu
+    bool enJeu = true;
+    while (enJeu)
     {
-        Console.Clear();
-        Console.WriteLine("\n=== Nouvelle Partie ===\n");
-        Console.WriteLine("Partie initialisée avec succès !\n");
-        isPartieEnCours = true;
-        Joueur joueur = new Joueur("Nathan");
-        Partie partieEnCours = new Partie(joueur);
+        var affichage = new AffichageParcelle(partieEnCours.ParcelleEnCours!);
+        int rang = affichage.AfficherAvecCurseur();
+        affichage.AfficherDetailRangee(rang); // Backspace dans cette méthode = retour
     }
+}
 
     private void ChargerPartie()
     {
@@ -84,5 +94,3 @@ Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
     }
 
 }
-
-// Test

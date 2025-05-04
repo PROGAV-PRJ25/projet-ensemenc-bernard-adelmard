@@ -2,13 +2,11 @@ public class AffichageParcelle
 {
     private Parcelle parcelle;
 
-    // Constructeur
     public AffichageParcelle(Parcelle parcelle)
     {
         this.parcelle = parcelle;
     }
 
-    // Méthodes
     public int AfficherAvecCurseur()
     {
         int lignes = parcelle.Hauteur;
@@ -47,6 +45,7 @@ public class AffichageParcelle
                 ligneSelectionnee = (ligneSelectionnee + 1) % lignes;
             else if (key.Key == ConsoleKey.Enter)
                 choixFait = true;
+
         }
 
         return ligneSelectionnee;
@@ -56,54 +55,75 @@ public class AffichageParcelle
     {
         Console.Clear();
         int[] tabPalier = new int[] { 100, 75, 50, 25, 0 };
+        int colonneSelectionnee = 0;
+        bool choixFait = false;
 
-        foreach (int palier in tabPalier)
+        while (!choixFait)
         {
+            Console.Clear();
+
+            foreach (int palier in tabPalier)
+            {
+                for (int i = 0; i < parcelle.Largeur; i++)
+                {
+                    var cepage = parcelle.MatriceEtat[y, i];
+                    if (cepage != null && cepage.Croissance >= palier)
+                    {
+                        if (palier == 100)
+                            Console.Write("🍇");
+                        else
+                            Console.Write("🌿");
+                    }
+                    else
+                    {
+                        Console.Write("  ");
+                    }
+                }
+                Console.WriteLine();
+            }
+
+            for (int i = 0; i < parcelle.Largeur; i++) Console.Write("🟫");
+            Console.WriteLine();
+
             for (int i = 0; i < parcelle.Largeur; i++)
             {
                 var cepage = parcelle.MatriceEtat[y, i];
-                if (cepage != null && cepage.Croissance >= palier)
+                if (cepage != null)
                 {
-                    if (palier == 100)
-                        Console.Write("🍇");
-                    else
-                        Console.Write("🌿");
+                    if (cepage.Etat == Cepage.EtatCepage.Saine)
+                        Console.Write("✅");
+                    else if (cepage.Etat == Cepage.EtatCepage.Malade)
+                        Console.Write("🦠");
+                    else if (cepage.Etat == Cepage.EtatCepage.Desechee)
+                        Console.Write("💧");
+                    else if (cepage.Etat == Cepage.EtatCepage.Morte)
+                        Console.Write("❌");
                 }
                 else
                 {
                     Console.Write("  ");
                 }
+
             }
             Console.WriteLine();
-        }
 
-        // Affichage du sol
-        for (int i = 0; i < parcelle.Largeur; i++)
-        {
-            Console.Write("🟫");
-        }
-        Console.WriteLine();
+            for (int i = 0; i < parcelle.Largeur; i++)
+            {
+                Console.Write(i == colonneSelectionnee ? "↑ " : "  ");
+            }
+            Console.WriteLine();
+            Console.WriteLine("← → pour changer de colonne | Backspace pour quitter");
 
-        // Affichage de l'état du cépage
-        for (int i = 0; i < parcelle.Largeur; i++)
-        {
-            var cepage = parcelle.MatriceEtat[y, i];
-            if (cepage != null)
-            {
-                if (cepage.Etat == Cepage.EtatCepage.Saine)
-                    Console.Write("✅");
-                else if (cepage.Etat == Cepage.EtatCepage.Malade)
-                    Console.Write("🦠");
-                else if (cepage.Etat == Cepage.EtatCepage.Desechee)
-                    Console.Write("💧");
-                else if (cepage.Etat == Cepage.EtatCepage.Morte)
-                    Console.Write("❌");
-            }
-            else
-            {
-                Console.Write("  ");
-            }
+            ConsoleKeyInfo key = Console.ReadKey(true);
+            if (key.Key == ConsoleKey.LeftArrow)
+                colonneSelectionnee = (colonneSelectionnee - 1 + parcelle.Largeur) % parcelle.Largeur;
+            else if (key.Key == ConsoleKey.RightArrow)
+                colonneSelectionnee = (colonneSelectionnee + 1) % parcelle.Largeur;
+            else if (key.Key == ConsoleKey.Enter)
+                choixFait = true;
+            else if (key.Key == ConsoleKey.Backspace)
+                return; // Quitte AfficherDetailRangee et revient dans la boucle dans Partie.cs
+
         }
-        Console.WriteLine();
     }
 }
