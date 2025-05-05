@@ -1,42 +1,11 @@
 public abstract class Cepage
 {
-    // Nom de la plante
+    // Caractéristique du cépage
     public string? Nom { get; set; }
-
-    // Type : "annuelle", "vivace", etc.
-    public string? Type { get; set; }
-
-    // Saisons de semis possibles (ex : ["Printemps", "Automne"])
-    public List<string>? SaisonsSemis { get; set; }
-
-    // Type de sol préféré (ex : "graveleux", "argileux")
-    public string? TerrainPrefere { get; set; }
-
-    // Espacement recommandé entre les plantes (en mètres)
-    public float Espacement { get; set; }
-
-    // Vitesse de croissance (exprimée en points/semaine)
-    public int VitesseCroissance { get; set; }
-
-    // Besoins en eau (0 à 100)
-    public int BesoinsEau { get; set; }
-
-    // Besoins en lumière (0 à 100)
-    public int BesoinsLumiere { get; set; }
-
-    // Température idéale (intervalle min-max)
-    public (int Min, int Max) TemperaturePreferee { get; set; }
-
-    // Liste des maladies possibles
-    //public List<Maladie> MaladiesPossibles { get; set; }
-
-    // Espérance de vie en semaines
     public int EsperanceDeVie { get; set; }
-
-    // Production possible (grappes, fruits, etc.), sur toute sa vie
+    public int VitesseCroissance { get; set; }
+    public List<Maladie> MaladiesPossibles { get; set; }
     public int ProductionPotentielle { get; set; }
-
-    // État de la plante
     public enum EtatCepage
     {
         Saine,
@@ -44,11 +13,33 @@ public abstract class Cepage
         Morte,
         Desechee
     }
-
     public EtatCepage Etat { get; set; } = EtatCepage.Saine;
+    public bool EstSain
+    {
+        get
+        {
+            return Etat == EtatCepage.Saine;
+        }
+    }
 
-    // Pourcentage de croissance actuelle
     public int Croissance { get; set; } = 0;
+
+    //Besoins du cépage
+    // On a 7 besoins donc il faut en avoir 4 validé sinon la plante meurt
+    public List<string> SaisonsPlantation { get; set; }
+    public string? SolPreferee { get; set; }
+    public int EspacementOptimal { get; set; }
+    public int BesoinsEau { get; set; }
+    public int BesoinsLumiere { get; set; }
+    public (int Min, int Max) TemperaturePreferee { get; set; }
+    // Pas malade
+
+    public Cepage() // Constructeur pour éviter de rendre nullable les propriétés
+    {
+        SaisonsPlantation = new List<string>();
+        MaladiesPossibles = new List<Maladie>();
+    }
+
 
     // Méthodes
     public abstract void Pousser();

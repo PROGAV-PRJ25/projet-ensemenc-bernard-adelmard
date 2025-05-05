@@ -3,8 +3,7 @@ public class CepageMerlot : Cepage
     public CepageMerlot()
     {
         Nom = "Merlot";
-        Type = "Vivace";
-        TerrainPrefere = "argileux";
+        SolPreferee = "argileux";
         VitesseCroissance = 10;
         BesoinsEau = 70;
         BesoinsLumiere = 50;
