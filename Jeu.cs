@@ -72,7 +72,7 @@ Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
             int? colonneSelectionnee = affichage.AfficherDetailRangee(rang); // Backspace dans cette méthode = retour
             if (colonneSelectionnee != null)
             {
-                int action = affichage.AfficherMenuAction(colonneSelectionnee.Value);
+                string action = affichage.AfficherMenuAction(colonneSelectionnee.Value);
                 Console.WriteLine($"Action {action} séléctionnée");
                 Console.ReadKey();
             }
@@ -85,6 +85,7 @@ Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
         Console.Clear();
         Console.WriteLine("\n=== Charger Partie ===\n");
         Console.WriteLine("Fonctionnalité à venir.\n");
+        Console.ReadKey();
     }
 
     private void AfficherRegles()

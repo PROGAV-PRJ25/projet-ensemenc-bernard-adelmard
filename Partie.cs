@@ -51,7 +51,7 @@ public class Partie
             // Ajout de cépages de test dans la ligne 1
             if (parcelle.Hauteur > 1 && parcelle.Largeur >= 4)
             {
-                parcelle.MatriceEtat[1, 0] = new CepageMerlot { Croissance = 25, Etat = Cepage.EtatCepage.Saine };
+                parcelle.MatriceEtat[0, 0] = new CepageMerlot { Croissance = 25, Etat = Cepage.EtatCepage.Saine };
                 parcelle.MatriceEtat[1, 1] = new CepageMerlot { Croissance = 50, Etat = Cepage.EtatCepage.Malade };
                 parcelle.MatriceEtat[1, 2] = new CepageMerlot { Croissance = 100, Etat = Cepage.EtatCepage.Morte };
                 parcelle.MatriceEtat[1, 3] = new CepageMerlot { Croissance = 10, Etat = Cepage.EtatCepage.Desechee };
