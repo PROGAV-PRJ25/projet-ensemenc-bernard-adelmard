@@ -65,18 +65,22 @@ Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
 
         // Boucle principale du jeu
         bool enJeu = true;
+
+        int dernierRang = 0;
+
         while (enJeu)
         {
             var affichage = new AffichageParcelle(partieEnCours.ParcelleEnCours!);
-            int rang = affichage.AfficherAvecCurseur();
-            int? colonneSelectionnee = affichage.AfficherDetailRangee(rang); // Backspace dans cette méthode = retour
+            int rang = affichage.AfficherAvecCurseur(dernierRang);
+            dernierRang = rang; // Pour revenir au rang avant d'être entré dans le mennu
+            int? colonneSelectionnee = affichage.AfficherDetailRangee(rang);
+
             if (colonneSelectionnee != null)
             {
                 string action = affichage.AfficherMenuAction(colonneSelectionnee.Value);
-                Console.WriteLine($"Action {action} séléctionnée");
+                Console.WriteLine($"Action {action} sélectionnée");
                 Console.ReadKey();
             }
-
         }
     }
 

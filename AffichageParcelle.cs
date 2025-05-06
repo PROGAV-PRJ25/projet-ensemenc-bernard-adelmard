@@ -8,11 +8,11 @@ public class AffichageParcelle
     {
         this.parcelle = parcelle;
     }
-    public int AfficherAvecCurseur()
+    public int AfficherAvecCurseur(int ligneInitiale = 0)
     {
         int lignes = parcelle.Hauteur;
         int colonnes = parcelle.Largeur;
-        int ligneSelectionnee = 0;
+        int ligneSelectionnee = ligneInitiale;
         bool choixFait = false;
         bool afficherEtat = false;
 
