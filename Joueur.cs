@@ -16,7 +16,7 @@ public class Joueur
 
     public void ReinitialiserActions()
     {
-        ActionsDisponibles = 2;
+        ActionsDisponibles = 5;
     }
 
     public void UtiliserAction()

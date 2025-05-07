@@ -1,3 +1,4 @@
+using System.Net.Sockets;
 using System.Threading;
 
 public class AffichageParcelle
@@ -62,35 +63,58 @@ public class AffichageParcelle
                 Console.WriteLine();
             }
 
-            Console.WriteLine();
+            // Affiche les infos à droite
+            int xOffset = parcelle.Largeur * 4 + 7; // 4 caractères par cellule + marge
+            AfficherInfosParcelle(xOffset, 2);
+
+            int positionY = lignes * 2 + 4;
+
+            if (lignes < 4)
+                positionY = lignes * 2 + 7;
+            
+            Console.SetCursorPosition(0, positionY);
             Console.WriteLine("↑ ↓ pour choisir un rang | Entrée pour valider");
 
+            Console.SetCursorPosition(0, positionY + 1);
+            Console.WriteLine("Espace pour ouvrir le menu des actions");
+
+
+
             int attente = 0;
-            while (attente < 10) // vérifie la touche toutes les 100ms pendant 1 seconde
+            bool toucheDetectee = false;
+
+            while (attente < 10 && !toucheDetectee) // vérifie la touche toutes les 100ms pendant 1 seconde
             {
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey(true);
+
                     if (key.Key == ConsoleKey.UpArrow)
                     {
                         ligneSelectionnee = (ligneSelectionnee - 1 + lignes) % lignes;
-                        break;
+                        toucheDetectee = true;
                     }
                     else if (key.Key == ConsoleKey.DownArrow)
                     {
                         ligneSelectionnee = (ligneSelectionnee + 1) % lignes;
-                        break;
+                        toucheDetectee = true;
                     }
                     else if (key.Key == ConsoleKey.Enter)
                     {
                         choixFait = true;
-                        break;
+                        toucheDetectee = true;
+                    }
+                    else if (key.Key == ConsoleKey.Spacebar)
+                    {
+                        AfficherMenuActionGeneral();
+                        toucheDetectee = true;
                     }
                 }
 
                 Thread.Sleep(100); // attend 100ms
                 attente++;
             }
+
 
             afficherEtat = !afficherEtat; // alterne l'affichage à chaque seconde
         }
@@ -168,12 +192,12 @@ public class AffichageParcelle
             }
 
             else if (key.Key == ConsoleKey.Backspace)
-                choixFait = true; //Quitte AfficherDetailRangee et revient dans la boucle dans Jeu.cs
+                choixFait = true;
         }
         return null;
     }
 
-    public string AfficherMenuAction(int x) // Méthode qui renvoi l'index de l'action, peut être changer pour renvoyer le string directement car la liste pourrait changer de taille
+    public string AfficherMenuActionDetail(int x) // Méthode qui renvoi le string de l'action
     {
         List<string> options = new List<string>
     {
@@ -186,6 +210,47 @@ public class AffichageParcelle
 
         menuAction = new MenuChoix(options, "Choisissez une action sur la plante :");
         return options[menuAction.Afficher()];
-
     }
+
+    public string AfficherMenuActionGeneral()
+    {
+        List<string> options = new()
+        {
+            "Planter",
+            "Renomer la parcelle",
+            "Voir toutes les parcelles",
+            "Passer à la semaine suivante"
+        };
+
+        var menuActionGeneral = new MenuChoix(options, "Action générale :");
+        return options[menuActionGeneral.Afficher()];
+    }
+
+    private void AfficherInfosParcelle(int x, int y)
+    {
+
+        Console.SetCursorPosition(x, y + 1);
+        Console.ForegroundColor = ConsoleColor.DarkGreen;
+        Console.WriteLine("===== Statut de la parcelle =====");
+        Console.ResetColor();
+
+        Console.SetCursorPosition(x, y + 3);
+        Console.WriteLine($"Sol : {parcelle.TypeSol}");
+
+        Console.SetCursorPosition(x, y + 4);
+        Console.WriteLine($"Fertilité : {parcelle.Fertilite}/100");
+
+        Console.SetCursorPosition(x, y + 5);
+        Console.WriteLine($"Humidité : {parcelle.Humidite}/100");
+
+        Console.SetCursorPosition(x, y + 6);
+        Console.WriteLine($"Ensoleillement : {parcelle.Ensoleillement}/100");
+
+        Console.SetCursorPosition(x, y + 7);
+        Console.WriteLine($"Température : {parcelle.Temperature}°C");
+
+        Console.SetCursorPosition(x, y + 8);
+        Console.WriteLine($"Parcelle Bio : {(parcelle.EstBio ? "Oui" : "Non")}");
+    }
+
 }

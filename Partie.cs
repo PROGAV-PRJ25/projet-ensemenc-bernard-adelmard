@@ -12,13 +12,28 @@ public class Partie
     {
         Joueur = joueur;
         int choix = ChoixTypeParcelle.Afficher();
-        InitialiserParcelles(choix, "Parcelle 1");
+        InitialiserParcelles(choix);
     }
 
     // Méthodes
-    private void InitialiserParcelles(int typeDeParcelle, string nomParcelle)
+    private void InitialiserParcelles(int typeDeParcelle)
     {
         Parcelle? parcelle = null;
+
+        string nomParcelle = "";
+
+        while (string.IsNullOrWhiteSpace(nomParcelle) || nomParcelle.Length > 30)
+        {
+            Console.Clear();
+            Console.WriteLine("Comment s'appelle cette parcelle ? (max 30 caractères)");
+            nomParcelle = Console.ReadLine()!;
+
+            if (nomParcelle.Length > 30)
+            {
+                Console.WriteLine("❌ Le nom est trop long. Appuyez sur une touche pour réessayer.");
+                Console.ReadKey();
+            }
+        }
 
         int largeur = 0;
         int hauteur = 0;
@@ -68,7 +83,20 @@ public class Partie
         Semaine++;
     }
 
-    public void Planter()
-    { }
+    public void PlanterCepage(Cepage cepage, int ligne, int colonne)
+    {
+        if (ParcelleEnCours != null)
+        {
+            if (ParcelleEnCours.MatriceEtat[ligne, colonne] == null)
+            {
+                ParcelleEnCours.MatriceEtat[ligne, colonne] = cepage;
+                Console.WriteLine($"🌱 {cepage.Nom} planté en ({ligne + 1}, {colonne + 1}) !");
+            }
+            else
+            {
+                Console.WriteLine("❌ Emplacement déjà occupé.");
+            }
+        }
+    }
 }
 

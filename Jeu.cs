@@ -77,7 +77,7 @@ Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
 
             if (colonneSelectionnee != null)
             {
-                string action = affichage.AfficherMenuAction(colonneSelectionnee.Value);
+                string action = affichage.AfficherMenuActionDetail(colonneSelectionnee.Value);
                 Console.WriteLine($"Action {action} sélectionnée");
                 Console.ReadKey();
             }
