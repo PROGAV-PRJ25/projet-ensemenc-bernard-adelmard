@@ -1,19 +1,29 @@
 public class Partie
 {
-    public Joueur Joueur { get; set; }
+    public Joueur? Joueur { get; set; }
     public List<Parcelle> Parcelles { get; set; } = new(); // Liste des parcelles que le joueur détiens
     public int Semaine { get; set; } = 1; // Numéro de la semaine en cours
     public Parcelle? ParcelleEnCours { get; set; }
     public MenuChoix ChoixTypeParcelle { get; set; } = new MenuChoix(new List<string> { "Argileuse", "Graveleux", "Calcaire" }, @"Quel type de parcelle voulez-vous créer pour commencer la partie ?
     "); // Création du menu
 
-    // Constructeur
-    public Partie(Joueur joueur)
+    // Constructeur mis à jour pour nouvelle partie seulement
+    public static Partie CreerNouvellePartie(Joueur joueur)
     {
-        Joueur = joueur;
-        int choix = ChoixTypeParcelle.Afficher();
-        InitialiserParcelles(choix);
+        Partie p = new Partie();
+        p.Joueur = joueur;
+
+        int choix = p.ChoixTypeParcelle.Afficher();
+        p.InitialiserParcelles(choix);
+
+        return p;
     }
+
+
+    // Constructeur sans logique pour charger partie déjà commencée
+    // Utilisé pour la désérialisation de la sauvegarde
+    public Partie() { }
+
 
     // Méthodes
     private void InitialiserParcelles(int typeDeParcelle)

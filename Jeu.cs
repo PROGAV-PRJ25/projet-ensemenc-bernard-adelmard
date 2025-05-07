@@ -60,8 +60,11 @@ Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
         Console.WriteLine("Partie initialisée avec succès !\n");
         isPartieEnCours = true;
 
-        Joueur joueur = new Joueur("Nathan");
-        Partie partieEnCours = new Partie(joueur);
+        Console.Write("Entrez votre nom : ");
+        string nomSauvegarde = Console.ReadLine()?.Trim() ?? "joueur";
+
+        Joueur joueur = new Joueur(nomSauvegarde);
+        Partie partieEnCours = Partie.CreerNouvellePartie(joueur); //seulement pour nouvelle partie
 
         // Boucle principale du jeu
         bool enJeu = true;
@@ -81,16 +84,63 @@ Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
                 Console.WriteLine($"Action {action} sélectionnée");
                 Console.ReadKey();
             }
+
+
+            // SAUVEGARDE de la partie
+            SauvegardeManager.Sauvegarder(partieEnCours, nomSauvegarde);
+
         }
     }
 
     private void ChargerPartie()
     {
         Console.Clear();
-        Console.WriteLine("\n=== Charger Partie ===\n");
-        Console.WriteLine("Fonctionnalité à venir.\n");
-        Console.ReadKey();
+        Console.WriteLine("\n=== Chargement de la Partie ===\n");
+
+        var nomsSauvegardes = SauvegardeManager.ListerSauvegardesDisponibles();
+
+        if (nomsSauvegardes.Count == 0)
+        {
+            Console.WriteLine("Aucune sauvegarde disponible.");
+            Console.ReadKey();
+            return;
+        }
+
+        MenuChoix menuSauvegardes = new MenuChoix(nomsSauvegardes, "Choisissez une sauvegarde :");
+        int index = menuSauvegardes.Afficher();
+        string nomSauvegardeChoisi = nomsSauvegardes[index];
+
+        var partieChargee = SauvegardeManager.Charger(nomSauvegardeChoisi);
+
+        if (partieChargee != null)
+        {
+            isPartieEnCours = true;
+
+            int dernierRang = 0;
+            while (true)
+            {
+                var affichage = new AffichageParcelle(partieChargee.ParcelleEnCours!);
+                int rang = affichage.AfficherAvecCurseur(dernierRang);
+                dernierRang = rang;
+                int? colonneSelectionnee = affichage.AfficherDetailRangee(rang);
+
+                if (colonneSelectionnee != null)
+                {
+                    string action = affichage.AfficherMenuActionDetail(colonneSelectionnee.Value);
+                    Console.WriteLine($"Action {action} sélectionnée");
+                    Console.ReadKey();
+                }
+
+                SauvegardeManager.Sauvegarder(partieChargee, nomSauvegardeChoisi);
+            }
+        }
+        else
+        {
+            Console.WriteLine("Erreur lors du chargement.");
+            Console.ReadKey();
+        }
     }
+
 
     private void AfficherRegles()
     {
