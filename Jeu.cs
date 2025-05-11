@@ -59,8 +59,19 @@ Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
         Console.WriteLine("\n=== Nouvelle Partie ===\n");
         isPartieEnCours = true;
 
-        Console.Write("Entrez le nom de votre partie : ");
-        string nomSauvegarde = Console.ReadLine()?.Trim() ?? "joueur";
+        string nomSauvegarde;
+
+        do
+        {
+            Console.Write("Entrez le nom de votre partie : ");
+            nomSauvegarde = Console.ReadLine()?.Trim() ?? "";
+
+            if (string.IsNullOrWhiteSpace(nomSauvegarde) || nomSauvegarde.Length > 30)
+            {
+                Console.WriteLine("⛔ Nom invalide. Veuillez entrer un nom non vide et de 30 caractères maximum.\n");
+            }
+
+        } while (string.IsNullOrWhiteSpace(nomSauvegarde) || nomSauvegarde.Length > 30);
 
         Joueur joueur = new Joueur(nomSauvegarde);
         Partie partieEnCours = Partie.CreerNouvellePartie(joueur); //seulement pour nouvelle partie

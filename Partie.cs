@@ -46,17 +46,17 @@ public class Partie
         int largeur = 0;
         int hauteur = 0;
 
-        while (largeur < 3 || largeur > 10)
+        while (largeur < 4 || largeur > 10)
         {
             Console.Clear();
-            Console.Write("Entrez la largeur de la parcelle (3 à 10) : ");
+            Console.Write("Entrez la largeur de la parcelle (4 à 10) : ");
             int.TryParse(Console.ReadLine(), out largeur);
         }
 
-        while (hauteur < 3 || hauteur > 10)
+        while (hauteur < 4 || hauteur > 10)
         {
             Console.Clear();
-            Console.Write("Entrez la hauteur de la parcelle (3 à 10) : ");
+            Console.Write("Entrez la hauteur de la parcelle (4 à 10) : ");
             int.TryParse(Console.ReadLine(), out hauteur);
         }
 
