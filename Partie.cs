@@ -23,8 +23,6 @@ public class Partie
     // Constructeur sans logique pour charger partie déjà commencée
     // Utilisé pour la désérialisation de la sauvegarde
     public Partie() { }
-
-
     // Méthodes
     private void InitialiserParcelles(int typeDeParcelle)
     {

@@ -4,8 +4,6 @@ using System;
 
 public static class SauvegardeManager
 {
-    private const string CheminFichier = "sauvegardes/partie1.json";
-
     public static void Sauvegarder(Partie partie, string nomSauvegarde)
     {
         string chemin = $"sauvegardes/{nomSauvegarde}.json";
@@ -19,22 +17,6 @@ public static class SauvegardeManager
         Directory.CreateDirectory("sauvegardes");
         File.WriteAllText(chemin, json);
         Console.WriteLine("✅ Partie sauvegardée !");
-    }
-
-
-    public static Partie? Charger()
-    {
-        if (!File.Exists(CheminFichier))
-        {
-            Console.WriteLine("❌ Aucun fichier de sauvegarde trouvé.");
-            return null;
-        }
-
-        var json = File.ReadAllText(CheminFichier);
-        return JsonConvert.DeserializeObject<Partie>(json, new JsonSerializerSettings
-        {
-            TypeNameHandling = TypeNameHandling.Auto
-        });
     }
 
     // Permet de lister les fichiers de la sauvegarde (nathan, claire, etc)

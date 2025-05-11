@@ -57,10 +57,9 @@ Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
     {
         Console.Clear();
         Console.WriteLine("\n=== Nouvelle Partie ===\n");
-        Console.WriteLine("Partie initialisée avec succès !\n");
         isPartieEnCours = true;
 
-        Console.Write("Entrez votre nom : ");
+        Console.Write("Entrez le nom de votre partie : ");
         string nomSauvegarde = Console.ReadLine()?.Trim() ?? "joueur";
 
         Joueur joueur = new Joueur(nomSauvegarde);
@@ -84,11 +83,8 @@ Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
                 Console.WriteLine($"Action {action} sélectionnée");
                 Console.ReadKey();
             }
-
-
             // SAUVEGARDE de la partie
             SauvegardeManager.Sauvegarder(partieEnCours, nomSauvegarde);
-
         }
     }
 
