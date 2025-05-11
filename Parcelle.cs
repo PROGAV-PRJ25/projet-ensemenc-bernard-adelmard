@@ -3,7 +3,7 @@ public abstract class Parcelle
     public string Nom { get; set; }
     public int Largeur { get; set; }
     public int Hauteur { get; set; }
-    public Cepage?[,] MatriceEtat { get; set; }
+    public Plante?[,] MatriceEtat { get; set; }
     public bool EstBio { get; set; } = false;
     public string? TypeSol { get; set; }
     public int Fertilite { get; set; } // 0 à 100
@@ -17,6 +17,6 @@ public abstract class Parcelle
         Nom = nom;
         Largeur = largeur;
         Hauteur = hauteur;
-        MatriceEtat = new Cepage?[hauteur, largeur]; // chaque case = un plant ou vide
+        MatriceEtat = new Plante?[hauteur, largeur]; // chaque case = un plant ou vide
     }
 }

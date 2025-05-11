@@ -74,10 +74,10 @@ public class Partie
             // Ajout de cépages de test dans la ligne 1
             if (parcelle.Hauteur > 1 && parcelle.Largeur >= 4)
             {
-                parcelle.MatriceEtat[0, 0] = new CepageMerlot { Croissance = 25, Etat = Cepage.EtatCepage.Saine };
-                parcelle.MatriceEtat[1, 1] = new CepageMerlot { Croissance = 50, Etat = Cepage.EtatCepage.Malade };
-                parcelle.MatriceEtat[1, 2] = new CepageMerlot { Croissance = 100, Etat = Cepage.EtatCepage.Morte };
-                parcelle.MatriceEtat[1, 3] = new CepageMerlot { Croissance = 10, Etat = Cepage.EtatCepage.Desechee };
+                parcelle.MatriceEtat[0, 0] = new CepageMerlot { Croissance = 25, Etat = Plante.EtatPlante.Saine };
+                parcelle.MatriceEtat[1, 1] = new CepageMerlot { Croissance = 50, Etat = Plante.EtatPlante.Malade };
+                parcelle.MatriceEtat[1, 2] = new CepageMerlot { Croissance = 100, Etat = Plante.EtatPlante.Morte };
+                parcelle.MatriceEtat[1, 3] = new CepageMerlot { Croissance = 10, Etat = Plante.EtatPlante.Desechee };
             }
 
             Parcelles.Add(parcelle);
@@ -91,14 +91,14 @@ public class Partie
         Semaine++;
     }
 
-    public void PlanterCepage(Cepage cepage, int ligne, int colonne)
+    public void Planter(Plante plante, int ligne, int colonne)
     {
         if (ParcelleEnCours != null)
         {
             if (ParcelleEnCours.MatriceEtat[ligne, colonne] == null)
             {
-                ParcelleEnCours.MatriceEtat[ligne, colonne] = cepage;
-                Console.WriteLine($"🌱 {cepage.Nom} planté en ({ligne + 1}, {colonne + 1}) !");
+                ParcelleEnCours.MatriceEtat[ligne, colonne] = plante;
+                Console.WriteLine($"🌱 {plante.Nom} planté en ({ligne + 1}, {colonne + 1}) !");
             }
             else
             {

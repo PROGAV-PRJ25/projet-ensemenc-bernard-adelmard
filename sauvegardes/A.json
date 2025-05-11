@@ -1,0 +1,239 @@
+{
+  "Joueur": {
+    "Nom": "A",
+    "Argent": 100,
+    "ActionsDisponibles": 5
+  },
+  "Parcelles": [
+    {
+      "$type": "ParcelleArgileuse, projet-ensemenc-bernard-adelmard",
+      "Nom": "A",
+      "Largeur": 4,
+      "Hauteur": 4,
+      "MatriceEtat": [
+        [
+          {
+            "$type": "CepageMerlot, projet-ensemenc-bernard-adelmard",
+            "Nom": "Cepage Merlot",
+            "EsperanceDeVie": 100,
+            "VitesseCroissance": 10,
+            "MaladiesPossibles": [],
+            "ProductionPotentielle": 30,
+            "Etat": 0,
+            "EstSain": true,
+            "Croissance": 25,
+            "SaisonsPlantation": [],
+            "SolPreferee": "argileux",
+            "EspacementOptimal": 0,
+            "BesoinsEau": 70,
+            "BesoinsLumiere": 50,
+            "TemperaturePreferee": {
+              "Item1": 15,
+              "Item2": 30
+            }
+          },
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          {
+            "$type": "CepageMerlot, projet-ensemenc-bernard-adelmard",
+            "Nom": "Cepage Merlot",
+            "EsperanceDeVie": 100,
+            "VitesseCroissance": 10,
+            "MaladiesPossibles": [],
+            "ProductionPotentielle": 30,
+            "Etat": 1,
+            "EstSain": false,
+            "Croissance": 50,
+            "SaisonsPlantation": [],
+            "SolPreferee": "argileux",
+            "EspacementOptimal": 0,
+            "BesoinsEau": 70,
+            "BesoinsLumiere": 50,
+            "TemperaturePreferee": {
+              "Item1": 15,
+              "Item2": 30
+            }
+          },
+          {
+            "$type": "CepageMerlot, projet-ensemenc-bernard-adelmard",
+            "Nom": "Cepage Merlot",
+            "EsperanceDeVie": 100,
+            "VitesseCroissance": 10,
+            "MaladiesPossibles": [],
+            "ProductionPotentielle": 30,
+            "Etat": 2,
+            "EstSain": false,
+            "Croissance": 100,
+            "SaisonsPlantation": [],
+            "SolPreferee": "argileux",
+            "EspacementOptimal": 0,
+            "BesoinsEau": 70,
+            "BesoinsLumiere": 50,
+            "TemperaturePreferee": {
+              "Item1": 15,
+              "Item2": 30
+            }
+          },
+          {
+            "$type": "CepageMerlot, projet-ensemenc-bernard-adelmard",
+            "Nom": "Cepage Merlot",
+            "EsperanceDeVie": 100,
+            "VitesseCroissance": 10,
+            "MaladiesPossibles": [],
+            "ProductionPotentielle": 30,
+            "Etat": 3,
+            "EstSain": false,
+            "Croissance": 10,
+            "SaisonsPlantation": [],
+            "SolPreferee": "argileux",
+            "EspacementOptimal": 0,
+            "BesoinsEau": 70,
+            "BesoinsLumiere": 50,
+            "TemperaturePreferee": {
+              "Item1": 15,
+              "Item2": 30
+            }
+          }
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "EstBio": false,
+      "TypeSol": "Argileux",
+      "Fertilite": 80,
+      "Humidite": 75,
+      "Ensoleillement": 50,
+      "Temperature": 18
+    }
+  ],
+  "Semaine": 1,
+  "ParcelleEnCours": {
+    "$type": "ParcelleArgileuse, projet-ensemenc-bernard-adelmard",
+    "Nom": "A",
+    "Largeur": 4,
+    "Hauteur": 4,
+    "MatriceEtat": [
+      [
+        {
+          "$type": "CepageMerlot, projet-ensemenc-bernard-adelmard",
+          "Nom": "Cepage Merlot",
+          "EsperanceDeVie": 100,
+          "VitesseCroissance": 10,
+          "MaladiesPossibles": [],
+          "ProductionPotentielle": 30,
+          "Etat": 0,
+          "EstSain": true,
+          "Croissance": 25,
+          "SaisonsPlantation": [],
+          "SolPreferee": "argileux",
+          "EspacementOptimal": 0,
+          "BesoinsEau": 70,
+          "BesoinsLumiere": 50,
+          "TemperaturePreferee": {
+            "Item1": 15,
+            "Item2": 30
+          }
+        },
+        null,
+        null,
+        null
+      ],
+      [
+        null,
+        {
+          "$type": "CepageMerlot, projet-ensemenc-bernard-adelmard",
+          "Nom": "Cepage Merlot",
+          "EsperanceDeVie": 100,
+          "VitesseCroissance": 10,
+          "MaladiesPossibles": [],
+          "ProductionPotentielle": 30,
+          "Etat": 1,
+          "EstSain": false,
+          "Croissance": 50,
+          "SaisonsPlantation": [],
+          "SolPreferee": "argileux",
+          "EspacementOptimal": 0,
+          "BesoinsEau": 70,
+          "BesoinsLumiere": 50,
+          "TemperaturePreferee": {
+            "Item1": 15,
+            "Item2": 30
+          }
+        },
+        {
+          "$type": "CepageMerlot, projet-ensemenc-bernard-adelmard",
+          "Nom": "Cepage Merlot",
+          "EsperanceDeVie": 100,
+          "VitesseCroissance": 10,
+          "MaladiesPossibles": [],
+          "ProductionPotentielle": 30,
+          "Etat": 2,
+          "EstSain": false,
+          "Croissance": 100,
+          "SaisonsPlantation": [],
+          "SolPreferee": "argileux",
+          "EspacementOptimal": 0,
+          "BesoinsEau": 70,
+          "BesoinsLumiere": 50,
+          "TemperaturePreferee": {
+            "Item1": 15,
+            "Item2": 30
+          }
+        },
+        {
+          "$type": "CepageMerlot, projet-ensemenc-bernard-adelmard",
+          "Nom": "Cepage Merlot",
+          "EsperanceDeVie": 100,
+          "VitesseCroissance": 10,
+          "MaladiesPossibles": [],
+          "ProductionPotentielle": 30,
+          "Etat": 3,
+          "EstSain": false,
+          "Croissance": 10,
+          "SaisonsPlantation": [],
+          "SolPreferee": "argileux",
+          "EspacementOptimal": 0,
+          "BesoinsEau": 70,
+          "BesoinsLumiere": 50,
+          "TemperaturePreferee": {
+            "Item1": 15,
+            "Item2": 30
+          }
+        }
+      ],
+      [
+        null,
+        null,
+        null,
+        null
+      ],
+      [
+        null,
+        null,
+        null,
+        null
+      ]
+    ],
+    "EstBio": false,
+    "TypeSol": "Argileux",
+    "Fertilite": 80,
+    "Humidite": 75,
+    "Ensoleillement": 50,
+    "Temperature": 18
+  },
+  "ChoixTypeParcelle": {}
+}

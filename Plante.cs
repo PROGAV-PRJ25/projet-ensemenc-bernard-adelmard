@@ -1,4 +1,4 @@
-public abstract class Cepage
+public abstract class Plante
 {
     // Caractéristique du cépage
     public string? Nom { get; set; }
@@ -6,19 +6,19 @@ public abstract class Cepage
     public int VitesseCroissance { get; set; }
     public List<Maladie> MaladiesPossibles { get; set; }
     public int ProductionPotentielle { get; set; }
-    public enum EtatCepage
+    public enum EtatPlante
     {
         Saine,
         Malade,
         Morte,
         Desechee
     }
-    public EtatCepage Etat { get; set; } = EtatCepage.Saine;
+    public EtatPlante Etat { get; set; } = EtatPlante.Saine;
     public bool EstSain
     {
         get
         {
-            return Etat == EtatCepage.Saine;
+            return Etat == EtatPlante.Saine;
         }
     }
 
@@ -34,7 +34,7 @@ public abstract class Cepage
     public (int Min, int Max) TemperaturePreferee { get; set; }
     // Pas malade
 
-    public Cepage() // Constructeur pour éviter de rendre nullable les propriétés
+    public Plante() // Constructeur pour éviter de rendre nullable les propriétés
     {
         SaisonsPlantation = new List<string>();
         MaladiesPossibles = new List<Maladie>();

@@ -2,7 +2,7 @@ public class Joueur
 {
     public string Nom { get; set; }
     public int Argent { get; set; } = 100; // monnaie de départ
-    public int ActionsDisponibles { get; set; } = 2;
+    public int ActionsDisponibles { get; set; } = 5;
 
     public Joueur(string nom)
     {

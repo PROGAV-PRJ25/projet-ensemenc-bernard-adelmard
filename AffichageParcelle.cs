@@ -36,16 +36,16 @@ public class AffichageParcelle
                     {
                         switch (cepage.Etat)
                         {
-                            case Cepage.EtatCepage.Saine:
+                            case Plante.EtatPlante.Saine:
                                 Console.Write("✅  ");
                                 break;
-                            case Cepage.EtatCepage.Malade:
+                            case Plante.EtatPlante.Malade:
                                 Console.Write("🦠  ");
                                 break;
-                            case Cepage.EtatCepage.Desechee:
+                            case Plante.EtatPlante.Desechee:
                                 Console.Write("💧  ");
                                 break;
-                            case Cepage.EtatCepage.Morte:
+                            case Plante.EtatPlante.Morte:
                                 Console.Write("❌  ");
                                 break;
                         }
@@ -161,13 +161,13 @@ public class AffichageParcelle
                 var cepage = parcelle.MatriceEtat[y, i];
                 if (cepage != null)
                 {
-                    if (cepage.Etat == Cepage.EtatCepage.Saine)
+                    if (cepage.Etat == Plante.EtatPlante.Saine)
                         Console.Write("✅");
-                    else if (cepage.Etat == Cepage.EtatCepage.Malade)
+                    else if (cepage.Etat == Plante.EtatPlante.Malade)
                         Console.Write("🦠");
-                    else if (cepage.Etat == Cepage.EtatCepage.Desechee)
+                    else if (cepage.Etat == Plante.EtatPlante.Desechee)
                         Console.Write("💧");
-                    else if (cepage.Etat == Cepage.EtatCepage.Morte)
+                    else if (cepage.Etat == Plante.EtatPlante.Morte)
                         Console.Write("❌");
                 }
             }

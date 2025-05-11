@@ -1,8 +1,8 @@
-public class CepageMerlot : Cepage
+public class CepageMerlot : Plante
 {
     public CepageMerlot()
     {
-        Nom = "Merlot";
+        Nom = "Cepage Merlot";
         SolPreferee = "argileux";
         VitesseCroissance = 10;
         BesoinsEau = 70;
