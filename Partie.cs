@@ -19,7 +19,6 @@ public class Partie
         return p;
     }
 
-
     // Constructeur sans logique pour charger partie déjà commencée
     // Utilisé pour la désérialisation de la sauvegarde
     public Partie() { }
@@ -93,7 +92,7 @@ public class Partie
 
     public void Planter(Plante plante, int ligne, int colonne)
     {
-        
+
         if (ParcelleEnCours != null)
         {
             if (ParcelleEnCours.MatriceEtat[ligne, colonne] == null)
