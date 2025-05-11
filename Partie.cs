@@ -93,12 +93,15 @@ public class Partie
 
     public void Planter(Plante plante, int ligne, int colonne)
     {
+        
         if (ParcelleEnCours != null)
         {
             if (ParcelleEnCours.MatriceEtat[ligne, colonne] == null)
             {
                 ParcelleEnCours.MatriceEtat[ligne, colonne] = plante;
+                Joueur!.UtiliserAction();
                 Console.WriteLine($"🌱 {plante.Nom} planté en ({ligne + 1}, {colonne + 1}) !");
+
             }
             else
             {

@@ -83,8 +83,8 @@ Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
 
         while (enJeu)
         {
-            var affichage = new AffichageParcelle(partieEnCours.ParcelleEnCours!);
-            int rang = affichage.AfficherAvecCurseur(dernierRang);
+            var affichage = new AffichageParcelle(partieEnCours.ParcelleEnCours!, joueur, partieEnCours);
+            int rang = affichage.Afficher(dernierRang);
             dernierRang = rang; // Pour revenir au rang avant d'être entré dans le mennu
             int? colonneSelectionnee = affichage.AfficherDetailRangee(rang);
 
@@ -126,8 +126,8 @@ Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
             int dernierRang = 0;
             while (true)
             {
-                var affichage = new AffichageParcelle(partieChargee.ParcelleEnCours!);
-                int rang = affichage.AfficherAvecCurseur(dernierRang);
+                var affichage = new AffichageParcelle(partieChargee.ParcelleEnCours!, partieChargee.Joueur!, partieChargee);
+                int rang = affichage.Afficher(dernierRang);
                 dernierRang = rang;
                 int? colonneSelectionnee = affichage.AfficherDetailRangee(rang);
 
