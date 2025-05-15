@@ -8,11 +8,13 @@ public class AffichageParcelle
     public MenuChoix? menuAction { get; set; }
     public Joueur? joueur { get; set; }
     public Partie? partie { get; set; }
-    public AffichageParcelle(Parcelle parcelle, Joueur joueur, Partie partie)
+    public Jeu? jeu { get; set; }
+    public AffichageParcelle(Parcelle parcelle, Joueur joueur, Partie partie, Jeu jeu)
     {
         this.parcelle = parcelle;
         this.joueur = joueur;
         this.partie = partie;
+        this.jeu = jeu;
     }
 
     public void AfficherParcelleCurseur(int ligneSelectionnee, int lignes, int colonnes, bool afficherEtat, bool planter, int[] caseSelectionnee)
@@ -226,6 +228,10 @@ public class AffichageParcelle
                     else if (key.Key == ConsoleKey.Spacebar)
                     {
                         AfficherMenuActionGeneral();
+
+                        if (jeu!.isChargement)
+                            return ligneSelectionnee;
+
                         toucheDetectee = true;
                     }
                 }
@@ -331,22 +337,33 @@ public class AffichageParcelle
         return options[menuAction.Afficher()];
     }
 
+
     public void AfficherMenuActionGeneral()
     {
-        List<string> options = new()
-        {
-            "Planter",
-            "Tout récolter",
-            "Renomer la parcelle",
-            "Voir toutes les parcelles",
-            "Passer à la semaine suivante"
-        };
+        var options = new List<string>
+    {
+        "Planter",
+        "Tout récolter",
+        "Renommer la parcelle",
+        "Voir toutes les parcelles",
+        "Passer à la semaine suivante"
+    };
 
-        var menuActionGeneral = new MenuChoix(options, @"Action générale :
-        ");
-        if (options[menuActionGeneral.Afficher()] == "Planter")
+        var menu = new MenuChoix(options, "Action générale :");
+        int choix = menu.Afficher();      // ← UNE seule lecture
+
+        switch (choix)
         {
-            AfficherPlantage();
+            case 0: // Planter
+                AfficherPlantage();
+                break;
+
+            case 4: // Passer à la semaine suivante
+                jeu!.isChargement = true;
+                break;
+
+            default:
+                break;
         }
     }
 

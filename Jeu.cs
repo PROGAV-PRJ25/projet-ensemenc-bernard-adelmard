@@ -1,6 +1,8 @@
 public class Jeu
 {
     private bool isPartieEnCours = false;
+    public bool enJeu = false;
+    public bool isChargement = false;
     private MenuChoix menuPrincipal;
 
     // Méthodes
@@ -77,27 +79,9 @@ Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
         Partie partieEnCours = Partie.CreerNouvellePartie(joueur); //seulement pour nouvelle partie
 
         // Boucle principale du jeu
-        bool enJeu = true;
-
-        int dernierRang = 0;
-
-        while (enJeu)
-        {
-            var affichage = new AffichageParcelle(partieEnCours.ParcelleEnCours!, joueur, partieEnCours);
-            int rang = affichage.Afficher(dernierRang);
-            dernierRang = rang; // Pour revenir au rang avant d'être entré dans le mennu
-            int? colonneSelectionnee = affichage.AfficherDetailRangee(rang);
-
-            if (colonneSelectionnee != null)
-            {
-                string action = affichage.AfficherMenuActionDetail(colonneSelectionnee.Value);
-                Console.WriteLine($"Action {action} sélectionnée");
-                Console.ReadKey();
-            }
-            // SAUVEGARDE de la partie
-            SauvegardeManager.Sauvegarder(partieEnCours, nomSauvegarde);
-        }
+        BoucleJeu(partieEnCours, joueur, nomSauvegarde);
     }
+
 
     private void ChargerPartie()
     {
@@ -122,24 +106,7 @@ Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
         if (partieChargee != null)
         {
             isPartieEnCours = true;
-
-            int dernierRang = 0;
-            while (true)
-            {
-                var affichage = new AffichageParcelle(partieChargee.ParcelleEnCours!, partieChargee.Joueur!, partieChargee);
-                int rang = affichage.Afficher(dernierRang);
-                dernierRang = rang;
-                int? colonneSelectionnee = affichage.AfficherDetailRangee(rang);
-
-                if (colonneSelectionnee != null)
-                {
-                    string action = affichage.AfficherMenuActionDetail(colonneSelectionnee.Value);
-                    Console.WriteLine($"Action {action} sélectionnée");
-                    Console.ReadKey();
-                }
-
-                SauvegardeManager.Sauvegarder(partieChargee, nomSauvegardeChoisi);
-            }
+            BoucleJeu(partieChargee, partieChargee.Joueur!, nomSauvegardeChoisi);
         }
         else
         {
@@ -162,4 +129,42 @@ Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
         Environment.Exit(0);
     }
 
+    private void BoucleJeu(Partie partie, Joueur joueur, string nomSauvegarde)
+    {
+        enJeu = true;
+        int dernierRang = 0;
+
+        while (enJeu)
+        {
+            if (isChargement)
+            {
+                AffichageChargement.Afficher(partie.Semaine);
+                partie.SemaineSuivante();
+                isChargement = false;
+                continue;
+            }
+
+            //Interface de la parcelle
+            var affichage = new AffichageParcelle(partie.ParcelleEnCours!,
+                                                  joueur,
+                                                  partie,
+                                                  this);
+
+            int rang = affichage.Afficher(dernierRang);
+            dernierRang = rang;
+
+            if (isChargement)
+                continue;
+
+            int? col = affichage.AfficherDetailRangee(rang);
+            if (col is int c)
+            {
+                string action = affichage.AfficherMenuActionDetail(c);
+                Console.WriteLine($"Action {action} sélectionnée");
+                Console.ReadKey();
+            }
+            
+            SauvegardeManager.Sauvegarder(partie, nomSauvegarde);
+        }
+    }
 }

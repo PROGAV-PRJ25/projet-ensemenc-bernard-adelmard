@@ -120,7 +120,7 @@
       "Temperature": 18
     }
   ],
-  "Semaine": 1,
+  "Semaine": 6,
   "ParcelleEnCours": {
     "$type": "ParcelleArgileuse, projet-ensemenc-bernard-adelmard",
     "Nom": "A",

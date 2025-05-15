@@ -85,7 +85,7 @@ public class Partie
         }
     }
 
-    public void Suivant()
+    public void SemaineSuivante()
     {
         Semaine++;
     }
