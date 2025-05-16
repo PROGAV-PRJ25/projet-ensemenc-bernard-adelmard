@@ -80,7 +80,7 @@ public class AffichageParcelle
 
     public void AfficherPlantage()
     {
-        List<Plante> plantesDisponibles = CataloguePlantes.GetToutes();
+        List<Plante> plantesDisponibles = CataloguePlantes.GetToutes(partie!.SaisonActuelle);
 
         int lignes = parcelle.Hauteur;
         int colonnes = parcelle.Largeur;
@@ -189,7 +189,7 @@ public class AffichageParcelle
             int xOffset = parcelle.Largeur * 4 + 7; // 4 caractères par cellule + marge
             AfficherInfosParcelle(xOffset, 2);
 
-            int positionY = lignes * 2 + 4;
+            int positionY = lignes * 2 + 5;
 
             if (lignes < 4)
                 positionY = lignes * 2 + 7;
@@ -369,7 +369,6 @@ public class AffichageParcelle
 
     private void AfficherInfosParcelle(int x, int y)
     {
-
         Console.SetCursorPosition(x, y);
         Console.ForegroundColor = ConsoleColor.DarkGreen;
         Console.WriteLine("===== Statut de la parcelle =====");
@@ -394,6 +393,9 @@ public class AffichageParcelle
         Console.WriteLine($"Parcelle Bio : {(parcelle.EstBio ? "Oui" : "Non")}");
 
         Console.SetCursorPosition(x, y + 8);
+        Console.WriteLine($"Saison actuelle: {partie!.SaisonActuelle}");
+
+        Console.SetCursorPosition(x, y + 9);
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine($"Nombre d'action disponible : {joueur!.ActionsDisponibles}");
         Console.ResetColor();

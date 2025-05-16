@@ -1,23 +1,17 @@
 public class CepageMerlot : Plante
 {
-    public CepageMerlot()
+    public CepageMerlot(string saisonActuelle)
+    : base(saisonActuelle)
     {
         Nom = "Cepage Merlot";
         SolPreferee = "argileux";
-        VitesseCroissance = 10;
+        VitesseCroissance = 15;
+        ProbaMaladie = 0.12;
         BesoinsEau = 70;
         BesoinsLumiere = 50;
         TemperaturePreferee = (15, 30);
         EsperanceDeVie = 100;
         ProductionPotentielle = 30;
-    }
-
-    public override void Pousser()
-    {
-    }
-
-    public override void VerifierEtat(int eauReçue, int lumiereReçue, int temperatureActuelle)
-    {
-
+        ConsommationEauHebdo = 40;
     }
 }

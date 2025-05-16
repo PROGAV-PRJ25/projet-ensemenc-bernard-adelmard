@@ -3,19 +3,28 @@ public class Partie
     public Joueur? Joueur { get; set; }
     public List<Parcelle> Parcelles { get; set; } = new(); // Liste des parcelles que le joueur détiens
     public int Semaine { get; set; } = 1; // Numéro de la semaine en cours
+    private GestionSaisons gestionSaisons = null!;
+
+    public string SaisonActuelle { get; private set; } = "";
     public Parcelle? ParcelleEnCours { get; set; }
     public MenuChoix ChoixTypeParcelle { get; set; } = new MenuChoix(new List<string> { "Argileuse", "Graveleux", "Calcaire" }, @"Quel type de parcelle voulez-vous créer pour commencer la partie ?
     "); // Création du menu
 
     // Constructeur mis à jour pour nouvelle partie seulement
+
     public static Partie CreerNouvellePartie(Joueur joueur)
     {
-        Partie p = new Partie();
+        var p = new Partie();
         p.Joueur = joueur;
+
+        // Initialise le gestionnaire avec 13 semaines/saison
+        p.gestionSaisons = new GestionSaisons(13);
+        // 2) Tire et stocke la saison de départ
+        p.SaisonActuelle = p.gestionSaisons.SaisonDeDepart;
+        Console.WriteLine($"Saison de départ : {p.SaisonActuelle}");
 
         int choix = p.ChoixTypeParcelle.Afficher();
         p.InitialiserParcelles(choix);
-
         return p;
     }
 
@@ -71,15 +80,6 @@ public class Partie
 
         if (parcelle != null)
         {
-            // Ajout de cépages de test dans la ligne 1
-            if (parcelle.Hauteur > 1 && parcelle.Largeur >= 4)
-            {
-                parcelle.MatriceEtat[0, 0] = new CepageMerlot { Croissance = 25, Etat = Plante.EtatPlante.Saine };
-                parcelle.MatriceEtat[1, 1] = new CepageMerlot { Croissance = 50, Etat = Plante.EtatPlante.Malade };
-                parcelle.MatriceEtat[1, 2] = new CepageMerlot { Croissance = 100, Etat = Plante.EtatPlante.Morte };
-                parcelle.MatriceEtat[1, 3] = new CepageMerlot { Croissance = 10, Etat = Plante.EtatPlante.Desechee };
-            }
-
             Parcelles.Add(parcelle);
             ParcelleEnCours = parcelle;
         }
@@ -88,8 +88,8 @@ public class Partie
     public void SemaineSuivante()
     {
         Semaine++;
+        SaisonActuelle = gestionSaisons.GetSaison(Semaine);
     }
-
     public void Planter(Plante plante, int ligne, int colonne)
     {
         if (ParcelleEnCours != null)
@@ -99,7 +99,6 @@ public class Partie
                 ParcelleEnCours.MatriceEtat[ligne, colonne] = plante;
                 Joueur!.UtiliserAction();
                 Console.WriteLine($"🌱 {plante.Nom} planté en ({ligne + 1}, {colonne + 1}) !");
-
             }
             else
             {

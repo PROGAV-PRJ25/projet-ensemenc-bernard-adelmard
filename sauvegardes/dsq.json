@@ -1,0 +1,182 @@
+{
+  "Joueur": {
+    "Nom": "dsq",
+    "Argent": 100,
+    "ActionsDisponibles": 4
+  },
+  "Parcelles": [
+    {
+      "$type": "ParcelleArgileuse, projet-ensemenc-bernard-adelmard",
+      "Nom": "dsq",
+      "Largeur": 6,
+      "Hauteur": 6,
+      "MatriceEtat": [
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          {
+            "$type": "CepageMerlot, projet-ensemenc-bernard-adelmard",
+            "Nom": "Cepage Merlot",
+            "Parcelle": null,
+            "EsperanceDeVie": 100,
+            "Hydratation": 100,
+            "ConsommationEauHebdo": 40,
+            "SaisonMomentPlantation": "Hiver",
+            "VitesseCroissance": 15,
+            "ProbaMaladie": 0.12,
+            "ProductionPotentielle": 30,
+            "Etat": 0,
+            "EstSain": true,
+            "Croissance": 0,
+            "SaisonsPlantation": [],
+            "SolPreferee": "argileux",
+            "EspacementOptimal": 0,
+            "BesoinsEau": 70,
+            "BesoinsLumiere": 50,
+            "TemperaturePreferee": {
+              "Item1": 15,
+              "Item2": 30
+            }
+          },
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "EstBio": false,
+      "TypeSol": "Argileux",
+      "Fertilite": 80,
+      "Humidite": 75,
+      "Ensoleillement": 50,
+      "Temperature": 18
+    }
+  ],
+  "Semaine": 8,
+  "SaisonActuelle": "Hiver",
+  "ParcelleEnCours": {
+    "$type": "ParcelleArgileuse, projet-ensemenc-bernard-adelmard",
+    "Nom": "dsq",
+    "Largeur": 6,
+    "Hauteur": 6,
+    "MatriceEtat": [
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      [
+        null,
+        null,
+        {
+          "$type": "CepageMerlot, projet-ensemenc-bernard-adelmard",
+          "Nom": "Cepage Merlot",
+          "Parcelle": null,
+          "EsperanceDeVie": 100,
+          "Hydratation": 100,
+          "ConsommationEauHebdo": 40,
+          "SaisonMomentPlantation": "Hiver",
+          "VitesseCroissance": 15,
+          "ProbaMaladie": 0.12,
+          "ProductionPotentielle": 30,
+          "Etat": 0,
+          "EstSain": true,
+          "Croissance": 0,
+          "SaisonsPlantation": [],
+          "SolPreferee": "argileux",
+          "EspacementOptimal": 0,
+          "BesoinsEau": 70,
+          "BesoinsLumiere": 50,
+          "TemperaturePreferee": {
+            "Item1": 15,
+            "Item2": 30
+          }
+        },
+        null,
+        null,
+        null
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    ],
+    "EstBio": false,
+    "TypeSol": "Argileux",
+    "Fertilite": 80,
+    "Humidite": 75,
+    "Ensoleillement": 50,
+    "Temperature": 18
+  },
+  "ChoixTypeParcelle": {}
+}

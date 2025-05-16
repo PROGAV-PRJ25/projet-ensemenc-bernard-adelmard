@@ -1,11 +1,11 @@
 public static class CataloguePlantes
 {
-    public static List<Plante> GetToutes()
+    public static List<Plante> GetToutes(string saisonActuelle)
     {
         return new List<Plante>
         {
-            new CepageMerlot(),
-            new CepageCabernetSauvignon()
+            new CepageMerlot(saisonActuelle),
+            new CepageCabernetSauvignon(saisonActuelle)
         };
     }
 }

@@ -2,7 +2,7 @@
   "Joueur": {
     "Nom": "A",
     "Argent": 100,
-    "ActionsDisponibles": 2
+    "ActionsDisponibles": 1
   },
   "Parcelles": [
     {
@@ -15,7 +15,9 @@
           {
             "$type": "CepageMerlot, projet-ensemenc-bernard-adelmard",
             "Nom": "Cepage Merlot",
+            "Parcelle": null,
             "EsperanceDeVie": 100,
+            "Hydratation": 100,
             "VitesseCroissance": 10,
             "MaladiesPossibles": [],
             "ProductionPotentielle": 30,
@@ -41,7 +43,9 @@
           {
             "$type": "CepageMerlot, projet-ensemenc-bernard-adelmard",
             "Nom": "Cepage Merlot",
+            "Parcelle": null,
             "EsperanceDeVie": 100,
+            "Hydratation": 100,
             "VitesseCroissance": 10,
             "MaladiesPossibles": [],
             "ProductionPotentielle": 30,
@@ -61,7 +65,9 @@
           {
             "$type": "CepageMerlot, projet-ensemenc-bernard-adelmard",
             "Nom": "Cepage Merlot",
+            "Parcelle": null,
             "EsperanceDeVie": 100,
+            "Hydratation": 100,
             "VitesseCroissance": 10,
             "MaladiesPossibles": [],
             "ProductionPotentielle": 30,
@@ -81,7 +87,9 @@
           {
             "$type": "CepageMerlot, projet-ensemenc-bernard-adelmard",
             "Nom": "Cepage Merlot",
+            "Parcelle": null,
             "EsperanceDeVie": 100,
+            "Hydratation": 100,
             "VitesseCroissance": 10,
             "MaladiesPossibles": [],
             "ProductionPotentielle": 30,
@@ -120,7 +128,7 @@
       "Temperature": 18
     }
   ],
-  "Semaine": 6,
+  "Semaine": 7,
   "ParcelleEnCours": {
     "$type": "ParcelleArgileuse, projet-ensemenc-bernard-adelmard",
     "Nom": "A",
@@ -131,7 +139,9 @@
         {
           "$type": "CepageMerlot, projet-ensemenc-bernard-adelmard",
           "Nom": "Cepage Merlot",
+          "Parcelle": null,
           "EsperanceDeVie": 100,
+          "Hydratation": 100,
           "VitesseCroissance": 10,
           "MaladiesPossibles": [],
           "ProductionPotentielle": 30,
@@ -156,7 +166,9 @@
         {
           "$type": "CepageMerlot, projet-ensemenc-bernard-adelmard",
           "Nom": "Cepage Merlot",
+          "Parcelle": null,
           "EsperanceDeVie": 100,
+          "Hydratation": 100,
           "VitesseCroissance": 10,
           "MaladiesPossibles": [],
           "ProductionPotentielle": 30,
@@ -176,7 +188,9 @@
         {
           "$type": "CepageMerlot, projet-ensemenc-bernard-adelmard",
           "Nom": "Cepage Merlot",
+          "Parcelle": null,
           "EsperanceDeVie": 100,
+          "Hydratation": 100,
           "VitesseCroissance": 10,
           "MaladiesPossibles": [],
           "ProductionPotentielle": 30,
@@ -196,7 +210,9 @@
         {
           "$type": "CepageMerlot, projet-ensemenc-bernard-adelmard",
           "Nom": "Cepage Merlot",
+          "Parcelle": null,
           "EsperanceDeVie": 100,
+          "Hydratation": 100,
           "VitesseCroissance": 10,
           "MaladiesPossibles": [],
           "ProductionPotentielle": 30,
@@ -216,7 +232,9 @@
         {
           "$type": "CepageMerlot, projet-ensemenc-bernard-adelmard",
           "Nom": "Cepage Merlot",
+          "Parcelle": null,
           "EsperanceDeVie": 100,
+          "Hydratation": 100,
           "VitesseCroissance": 10,
           "MaladiesPossibles": [],
           "ProductionPotentielle": 30,
@@ -238,7 +256,9 @@
         {
           "$type": "CepageCabernetSauvignon, projet-ensemenc-bernard-adelmard",
           "Nom": "Cepage Cabernet Sauvignon",
+          "Parcelle": null,
           "EsperanceDeVie": 120,
+          "Hydratation": 100,
           "VitesseCroissance": 8,
           "MaladiesPossibles": [],
           "ProductionPotentielle": 25,
@@ -257,7 +277,28 @@
         },
         null,
         null,
-        null
+        {
+          "$type": "CepageMerlot, projet-ensemenc-bernard-adelmard",
+          "Nom": "Cepage Merlot",
+          "Parcelle": null,
+          "EsperanceDeVie": 100,
+          "Hydratation": 100,
+          "VitesseCroissance": 10,
+          "MaladiesPossibles": [],
+          "ProductionPotentielle": 30,
+          "Etat": 0,
+          "EstSain": true,
+          "Croissance": 0,
+          "SaisonsPlantation": [],
+          "SolPreferee": "argileux",
+          "EspacementOptimal": 0,
+          "BesoinsEau": 70,
+          "BesoinsLumiere": 50,
+          "TemperaturePreferee": {
+            "Item1": 15,
+            "Item2": 30
+          }
+        }
       ],
       [
         null,
@@ -265,7 +306,9 @@
         {
           "$type": "CepageCabernetSauvignon, projet-ensemenc-bernard-adelmard",
           "Nom": "Cepage Cabernet Sauvignon",
+          "Parcelle": null,
           "EsperanceDeVie": 120,
+          "Hydratation": 100,
           "VitesseCroissance": 8,
           "MaladiesPossibles": [],
           "ProductionPotentielle": 25,
