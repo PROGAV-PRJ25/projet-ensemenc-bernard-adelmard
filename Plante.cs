@@ -6,13 +6,13 @@ public abstract class Plante
     public string? Nom { get; set; }
     public Parcelle Parcelle { get; set; } = null!;
     public int EsperanceDeVie { get; set; }
-    public int Hydratation { get; private set; } = 100;
+    public int Hydratation { get;  set; } = 100;
     public int ConsommationEauHebdo { get; set; }
     public string SaisonMomentPlantation { get; set; }
     public int VitesseCroissance { get; set; }
     public double ProbaMaladie { get; set; } = 0;
     public int ProductionPotentielle { get; set; }
-    public enum EtatPlante { Saine, Malade, Morte, Desechee }
+    public enum EtatPlante { Saine, Malade, Morte, Desechee,  }
     public EtatPlante Etat { get; set; } = EtatPlante.Saine;
     public bool EstSain
     {
@@ -43,7 +43,7 @@ public abstract class Plante
     private static readonly Random rnd = new Random();
 
     // Méthodes
-    public void AvancerSemaine(int lumiere, int temp)
+    public void AvancerSemaine(int ensoleillement, int temp)
     {
         if (Etat == EtatPlante.Morte) return;
 
@@ -61,7 +61,7 @@ public abstract class Plante
         }
 
         // Croissance
-        int bonus = CalculerBonusCroissance(lumiere, temp);
+        int bonus = CalculerBonusCroissance(ensoleillement, temp);
         Croissance = Math.Min(100, Croissance + VitesseCroissance + bonus); // Min pour pas dépasser 100
         EsperanceDeVie--;
         if (EsperanceDeVie <= 0) Etat = EtatPlante.Morte;

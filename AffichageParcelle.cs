@@ -280,20 +280,22 @@ public class AffichageParcelle
 
             for (int i = 0; i < parcelle.Largeur; i++) Console.Write("🟫");
             Console.WriteLine();
-
             for (int i = 0; i < parcelle.Largeur; i++)
             {
                 var cepage = parcelle.MatriceEtat[y, i];
                 if (cepage != null)
                 {
-                    if (cepage.Etat == Plante.EtatPlante.Saine)
-                        Console.Write("✅");
-                    else if (cepage.Etat == Plante.EtatPlante.Malade)
-                        Console.Write("🦠");
-                    else if (cepage.Etat == Plante.EtatPlante.Desechee)
-                        Console.Write("💧");
-                    else if (cepage.Etat == Plante.EtatPlante.Morte)
-                        Console.Write("❌");
+                    switch (cepage.Etat)
+                    {
+                        case Plante.EtatPlante.Saine: Console.Write("✅"); break;
+                        case Plante.EtatPlante.Malade: Console.Write("🦠"); break;
+                        case Plante.EtatPlante.Desechee: Console.Write("💧"); break;
+                        case Plante.EtatPlante.Morte: Console.Write("❌"); break;
+                    }
+                }
+                else
+                {
+                    Console.Write("  ");
                 }
             }
             Console.WriteLine();
@@ -302,9 +304,30 @@ public class AffichageParcelle
             {
                 Console.Write(i == colonneSelectionnee ? "↑ " : "  ");
             }
+
             Console.WriteLine();
             Console.WriteLine("← → pour changer de colonne | Backspace pour quitter");
 
+            int x = parcelle.Largeur + 10;
+            var selected = parcelle.MatriceEtat[y, colonneSelectionnee];
+
+            if (selected != null)
+            {
+                Console.SetCursorPosition(x, 0);
+                Console.WriteLine($"Type de plante: {selected!.Nom}");
+
+                Console.SetCursorPosition(x, 1);
+                Console.WriteLine($"Croissance: {selected!.Croissance}%");
+
+                Console.SetCursorPosition(x, 2);
+                Console.WriteLine($"État : {selected!.Etat}");
+
+                Console.SetCursorPosition(x, 3);
+                Console.WriteLine($"Hydratation: {selected.Hydratation}% ");
+
+                Console.SetCursorPosition(x, 3);
+                Console.WriteLine($"Hydratation: {selected.Hydratation}% ");
+            }
 
             ConsoleKeyInfo key = Console.ReadKey(true);
             if (key.Key == ConsoleKey.LeftArrow)

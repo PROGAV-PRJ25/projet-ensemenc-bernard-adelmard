@@ -4,6 +4,7 @@ public class Jeu
     public bool enJeu = false;
     public bool isChargement = false;
     private MenuChoix menuPrincipal;
+    
 
     // Méthodes
     public Jeu()
@@ -102,9 +103,12 @@ Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
         string nomSauvegardeChoisi = nomsSauvegardes[index];
 
         var partieChargee = SauvegardeManager.Charger(nomSauvegardeChoisi);
-
         if (partieChargee != null)
         {
+
+            partieChargee.gestionSaisons = new GestionSaisons(13);
+            partieChargee.SaisonActuelle = partieChargee.gestionSaisons.GetSaison(partieChargee.Semaine);
+
             isPartieEnCours = true;
             BoucleJeu(partieChargee, partieChargee.Joueur!, nomSauvegardeChoisi);
         }
@@ -164,7 +168,7 @@ Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
                 Console.ReadKey();
             }
             
-            SauvegardeManager.Sauvegarder(partie, nomSauvegarde);
+            //SauvegardeManager.Sauvegarder(partie, nomSauvegarde);
         }
     }
 }

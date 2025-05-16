@@ -3,15 +3,14 @@ public class Partie
     public Joueur? Joueur { get; set; }
     public List<Parcelle> Parcelles { get; set; } = new(); // Liste des parcelles que le joueur détiens
     public int Semaine { get; set; } = 1; // Numéro de la semaine en cours
-    private GestionSaisons gestionSaisons = null!;
+    public GestionSaisons gestionSaisons = null!;
 
-    public string SaisonActuelle { get; private set; } = "";
+    public string SaisonActuelle { get; set; } = "";
     public Parcelle? ParcelleEnCours { get; set; }
     public MenuChoix ChoixTypeParcelle { get; set; } = new MenuChoix(new List<string> { "Argileuse", "Graveleux", "Calcaire" }, @"Quel type de parcelle voulez-vous créer pour commencer la partie ?
     "); // Création du menu
 
     // Constructeur mis à jour pour nouvelle partie seulement
-
     public static Partie CreerNouvellePartie(Joueur joueur)
     {
         var p = new Partie();
@@ -89,6 +88,29 @@ public class Partie
     {
         Semaine++;
         SaisonActuelle = gestionSaisons.GetSaison(Semaine);
+        foreach (var parcelle in Parcelles)
+        {
+            int hauteur = parcelle.Hauteur;
+            int largeur = parcelle.Largeur;
+
+            // Parcours ligne par ligne
+            for (int y = 0; y < hauteur; y++)
+                for (int x = 0; x < largeur; x++)
+                {
+                    var plante = parcelle.MatriceEtat[y, x];
+                    if (plante == null)
+                        continue;
+
+                    int ensoleillement = 88;
+                    int temperature = 20;
+
+                    plante.AvancerSemaine(ensoleillement, temperature);
+
+                    // Si elle est morte, on la retire de la grille
+                    if (plante.Etat == Plante.EtatPlante.Morte)
+                        parcelle.MatriceEtat[y, x] = null;
+                }
+        }
     }
     public void Planter(Plante plante, int ligne, int colonne)
     {
@@ -97,6 +119,7 @@ public class Partie
             if (ParcelleEnCours.MatriceEtat[ligne, colonne] == null)
             {
                 ParcelleEnCours.MatriceEtat[ligne, colonne] = plante;
+                plante.Parcelle = ParcelleEnCours;
                 Joueur!.UtiliserAction();
                 Console.WriteLine($"🌱 {plante.Nom} planté en ({ligne + 1}, {colonne + 1}) !");
             }
