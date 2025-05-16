@@ -6,13 +6,13 @@ public abstract class Plante
     public string? Nom { get; set; }
     public Parcelle Parcelle { get; set; } = null!;
     public int EsperanceDeVie { get; set; }
-    public int Hydratation { get;  set; } = 100;
+    public int Hydratation { get; set; } = 100;
     public int ConsommationEauHebdo { get; set; }
     public string SaisonMomentPlantation { get; set; }
     public int VitesseCroissance { get; set; }
     public double ProbaMaladie { get; set; } = 0;
     public int ProductionPotentielle { get; set; }
-    public enum EtatPlante { Saine, Malade, Morte, Desechee,  }
+    public enum EtatPlante { Saine, Malade, Morte, Desechee, }
     public EtatPlante Etat { get; set; } = EtatPlante.Saine;
     public bool EstSain
     {
@@ -49,13 +49,10 @@ public abstract class Plante
 
         // Hydratation diminue chaque semaine
         Hydratation = Math.Max(0, Hydratation - ConsommationEauHebdo); // Max pour éviter les valeurs négatives
-        if (Hydratation < BesoinsEau)
-        {
-            Etat = EtatPlante.Desechee;
-        }
+        MettreAJourEtatHydratation();
 
         // Maladie
-        if (Etat != EtatPlante.Malade && rnd.NextDouble() < ProbaMaladie)
+        if (Etat != EtatPlante.Malade && Etat != EtatPlante.Desechee && rnd.NextDouble() < ProbaMaladie)
         {
             Etat = EtatPlante.Malade;
         }
@@ -110,5 +107,18 @@ public abstract class Plante
                           temp <= TemperaturePreferee.Max;
 
         return eauOK && lumOK && tempOK; // Return true si en vie, sinon false
+    }
+    public void Arroser(int quantite = 70)
+    {
+        Hydratation = Math.Min(100, Hydratation + quantite);
+        MettreAJourEtatHydratation();
+    }
+
+    private void MettreAJourEtatHydratation()
+    {
+        if (Hydratation < BesoinsEau)
+            Etat = EtatPlante.Desechee;
+        else if (Etat != EtatPlante.Malade)
+            Etat = EtatPlante.Saine;
     }
 }

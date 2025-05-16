@@ -88,6 +88,7 @@ public class Partie
     {
         Semaine++;
         SaisonActuelle = gestionSaisons.GetSaison(Semaine);
+        Joueur!.ReinitialiserActions();
         foreach (var parcelle in Parcelles)
         {
             int hauteur = parcelle.Hauteur;

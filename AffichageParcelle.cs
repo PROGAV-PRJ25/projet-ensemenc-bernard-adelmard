@@ -324,9 +324,6 @@ public class AffichageParcelle
 
                 Console.SetCursorPosition(x, 3);
                 Console.WriteLine($"Hydratation: {selected.Hydratation}% ");
-
-                Console.SetCursorPosition(x, 3);
-                Console.WriteLine($"Hydratation: {selected.Hydratation}% ");
             }
 
             ConsoleKeyInfo key = Console.ReadKey(true);

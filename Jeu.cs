@@ -4,7 +4,6 @@ public class Jeu
     public bool enJeu = false;
     public bool isChargement = false;
     private MenuChoix menuPrincipal;
-    
 
     // Méthodes
     public Jeu()
@@ -164,10 +163,29 @@ Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
             if (col is int c)
             {
                 string action = affichage.AfficherMenuActionDetail(c);
-                Console.WriteLine($"Action {action} sélectionnée");
-                Console.ReadKey();
+                switch (action)
+                {
+                    case "Arroser":
+                        // Récupère la plante sélectionnée
+                        var plante = partie.ParcelleEnCours!.MatriceEtat[rang, c];
+                        if (plante != null && joueur.ActionsDisponibles > 0)
+                        {
+                            plante.Arroser();               
+                            joueur.UtiliserAction();
+                            Console.WriteLine("💧 Vous avez arrosé la plante !");
+                        }
+                        else
+                        {
+                            Console.WriteLine("❌ Impossible d'arroser (plus d'actions ou pas de plante).");
+                        }
+                        Console.ReadKey();
+                        break;
+
+                    case "Traiter":
+                        // Mettre état sur Saine
+                        break;
+                }
             }
-            
             //SauvegardeManager.Sauvegarder(partie, nomSauvegarde);
         }
     }
