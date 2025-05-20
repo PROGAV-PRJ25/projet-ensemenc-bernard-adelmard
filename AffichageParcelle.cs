@@ -398,24 +398,18 @@ public class AffichageParcelle
         Console.WriteLine($"Sol : {parcelle.TypeSol}");
 
         Console.SetCursorPosition(x, y + 3);
-        Console.WriteLine($"Fertilité : {parcelle.Fertilite}/100");
-
-        Console.SetCursorPosition(x, y + 4);
-        Console.WriteLine($"Humidité : {parcelle.Humidite}/100");
-
-        Console.SetCursorPosition(x, y + 5);
         Console.WriteLine($"Ensoleillement : {parcelle.Ensoleillement}/100");
 
-        Console.SetCursorPosition(x, y + 6);
+        Console.SetCursorPosition(x, y + 4);
         Console.WriteLine($"Température : {parcelle.Temperature}°C");
 
-        Console.SetCursorPosition(x, y + 7);
-        Console.WriteLine($"Parcelle Bio : {(parcelle.EstBio ? "Oui" : "Non")}");
+        Console.SetCursorPosition(x, y + 5);
+        Console.WriteLine($"Pluie cette semaine : {(parcelle.Pluie ? "Oui" : "Non")}");
 
-        Console.SetCursorPosition(x, y + 8);
+        Console.SetCursorPosition(x, y + 6);
         Console.WriteLine($"Saison actuelle: {partie!.SaisonActuelle}");
 
-        Console.SetCursorPosition(x, y + 9);
+        Console.SetCursorPosition(x, y + 7);
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine($"Nombre d'action disponible : {joueur!.ActionsDisponibles}");
         Console.ResetColor();

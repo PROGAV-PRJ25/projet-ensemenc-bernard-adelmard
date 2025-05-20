@@ -4,11 +4,12 @@ public class Partie
     public List<Parcelle> Parcelles { get; set; } = new(); // Liste des parcelles que le joueur détiens
     public int Semaine { get; set; } = 1; // Numéro de la semaine en cours
     public GestionSaisons gestionSaisons = null!;
-
     public string SaisonActuelle { get; set; } = "";
     public Parcelle? ParcelleEnCours { get; set; }
     public MenuChoix ChoixTypeParcelle { get; set; } = new MenuChoix(new List<string> { "Argileuse", "Graveleux", "Calcaire" }, @"Quel type de parcelle voulez-vous créer pour commencer la partie ?
     "); // Création du menu
+
+    private static readonly Random rnd = new Random();
 
     // Constructeur mis à jour pour nouvelle partie seulement
     public static Partie CreerNouvellePartie(Joueur joueur)
@@ -24,20 +25,18 @@ public class Partie
 
         int choix = p.ChoixTypeParcelle.Afficher();
         p.InitialiserParcelles(choix);
+        p.AppliquerMeteo();
         return p;
     }
 
-
-    // Constructeur sans logique pour charger partie déjà commencée
-    // Utilisé pour la désérialisation de la sauvegarde
     public Partie() { }
+
     // Méthodes
     private void InitialiserParcelles(int typeDeParcelle)
     {
         Parcelle? parcelle = null;
 
         string nomParcelle = "";
-
         while (string.IsNullOrWhiteSpace(nomParcelle) || nomParcelle.Length > 30)
         {
             Console.Clear();
@@ -93,6 +92,7 @@ public class Partie
         {
             int hauteur = parcelle.Hauteur;
             int largeur = parcelle.Largeur;
+            AppliquerMeteo();
 
             // Parcours ligne par ligne
             for (int y = 0; y < hauteur; y++)
@@ -102,10 +102,10 @@ public class Partie
                     if (plante == null)
                         continue;
 
-                    int ensoleillement = 88;
-                    int temperature = 20;
+                    if (parcelle.Pluie) // S'il pleut alors on arrose un peu
+                        plante.Arroser(20);
 
-                    plante.AvancerSemaine(ensoleillement, temperature);
+                    plante.AvancerSemaine(parcelle.Ensoleillement, parcelle.Temperature);
 
                     // Si elle est morte, on la retire de la grille
                     if (plante.Etat == Plante.EtatPlante.Morte)
@@ -130,5 +130,41 @@ public class Partie
             }
         }
     }
+
+    public void AppliquerMeteo()
+    {
+        foreach (var parcelle in Parcelles)
+        {
+            // 1) Pluie à 30%
+            parcelle.Pluie = rnd.NextDouble() < 0.3;
+
+            // 2) Ensoleillement
+            int ensoleillement = parcelle.Pluie
+                ? 0
+                : rnd.Next(30, 101);
+
+            // 3) Température selon saison
+            int tempMin, tempMax;
+            switch (SaisonActuelle)
+            {
+                case "Été":
+                    tempMin = 20; tempMax = 37; break;
+                case "Hiver":
+                    tempMin = -4; tempMax = 10; break;
+                case "Printemps":
+                    tempMin = 8; tempMax = 20; break;
+                case "Automne":
+                    tempMin = 10; tempMax = 18; break;
+                default:
+                    tempMin = 5; tempMax = 25; break;
+            }
+            int temperature = rnd.Next(tempMin, tempMax + 1);
+
+            // 4) Stocke pour l’affichage
+            parcelle.Ensoleillement = ensoleillement;
+            parcelle.Temperature = temperature;
+        }
+    }
+
 }
 
