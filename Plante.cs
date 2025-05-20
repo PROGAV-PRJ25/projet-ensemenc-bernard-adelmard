@@ -8,6 +8,16 @@ public abstract class Plante
     public int Hydratation { get; set; } = 100;
     public int ConsommationEauHebdo { get; set; }
     public string SaisonMomentPlantation { get; set; }
+    public bool EstDansSaisonPreferee
+    {
+        get
+        {
+            if (SaisonsPlantation.Contains(SaisonMomentPlantation))
+                return true;
+            else
+                return false;
+        }
+    }
     public int VitesseCroissance { get; set; }
     public double ProbaMaladie { get; set; } = 0;
     public int ProductionPotentielle { get; set; }
@@ -50,7 +60,7 @@ public abstract class Plante
         Hydratation = Math.Max(0, Hydratation - ConsommationEauHebdo); // Max pour éviter les valeurs négatives
         MettreAJourEtatHydratation();
 
-        if (!VerifierSurvie(ensoleillement))
+        if (!VerifierSurvie(ensoleillement, temp))
         {
             Etat = EtatPlante.Morte;
             return;
@@ -70,10 +80,10 @@ public abstract class Plante
             Etat = EtatPlante.Morte;
     }
 
-    private bool VerifierSurvie(int ensoleillement)
+    private bool VerifierSurvie(int ensoleillement, int temp)
     {
         int satisfaits = 0;
-        const int totalBesoins = 5;
+        const int totalBesoins = 6;
 
         // 1. Non malade
         if (Etat != EtatPlante.Malade) satisfaits++;
@@ -88,8 +98,11 @@ public abstract class Plante
         if (Parcelle != null && SolPreferee == Parcelle.TypeSol) satisfaits++;
 
         // 5. Saison de plantation
-        if (SaisonsPlantation.Contains(SaisonMomentPlantation))
-        
+        if (EstDansSaisonPreferee)
+            satisfaits++;
+
+        // 6. Température
+        if (temp >= TemperaturePreferee.Min && temp <= TemperaturePreferee.Max)
             satisfaits++;
 
         // Return true si on atteint au moins la moitié 
@@ -116,15 +129,7 @@ public abstract class Plante
         else
             bonus -= 2;
 
-        foreach (var saison in SaisonsPlantation)
-        {
-            if (SaisonMomentPlantation == saison)
-            {
-                bonus += 2;
-            }
-            else
-                bonus -= 2;
-        }
+        bonus += EstDansSaisonPreferee ? +2 : -2;
 
         if (Etat == EtatPlante.Malade || Etat == EtatPlante.Desechee)
             bonus /= 2;

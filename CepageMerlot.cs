@@ -4,7 +4,7 @@ public class CepageMerlot : Plante
         : base(saisonActuelle)
     {
         Nom = "Cépage Merlot";
-        SolPreferee = "argileux";
+        SolPreferee = "Argileux";
         VitesseCroissance = 15;
         ProbaMaladie = 0.12;
         BesoinsEau = 70;

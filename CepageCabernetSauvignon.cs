@@ -4,7 +4,7 @@ public class CepageCabernetSauvignon : Plante
     : base(saisonActuelle)
     {
         Nom = "Cepage Cabernet Sauvignon";
-        SolPreferee = "graveleux";
+        SolPreferee = "Graveleux";
         VitesseCroissance = 13;
         ProbaMaladie = 0.08;
         BesoinsEau = 60;

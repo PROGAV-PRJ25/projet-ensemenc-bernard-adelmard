@@ -239,11 +239,8 @@ public class AffichageParcelle
                 Thread.Sleep(100); // attend 100ms
                 attente++;
             }
-
-
             afficherEtat = !afficherEtat; // alterne l'affichage à chaque seconde
         }
-
         return ligneSelectionnee;
     }
 
@@ -324,6 +321,24 @@ public class AffichageParcelle
 
                 Console.SetCursorPosition(x, 3);
                 Console.WriteLine($"Hydratation: {selected.Hydratation}% ");
+
+                Console.SetCursorPosition(x, 4);
+                if (selected.BesoinsLumiere > parcelle.Ensoleillement)
+                    Console.WriteLine("Ensoleillement:      : ✅");
+                else
+                    Console.WriteLine("Ensoleillement:      : ❌");
+
+                Console.SetCursorPosition(x, 5);
+                if (selected.SolPreferee == parcelle.TypeSol)
+                    Console.WriteLine("Sol préféré          : ✅");
+                else
+                    Console.WriteLine("Sol préféré          : ❌");
+
+                Console.SetCursorPosition(x, 6);
+                if (selected.EstDansSaisonPreferee)
+                    Console.WriteLine("Saison de plantation : ✅");
+                else
+                    Console.WriteLine("Saison de plantation : ❌");
             }
 
             ConsoleKeyInfo key = Console.ReadKey(true);
