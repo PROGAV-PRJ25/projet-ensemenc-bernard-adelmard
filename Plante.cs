@@ -1,11 +1,9 @@
-using System.Runtime.InteropServices;
-
 public abstract class Plante
 {
     // Caractéristique du cépage
     public string? Nom { get; set; }
     public Parcelle Parcelle { get; set; } = null!;
-    private int _semainesDesechees = 0;
+    private int semainesDesechees = 0;
     public int EsperanceDeVie { get; set; }
     public int Hydratation { get; set; } = 100;
     public int ConsommationEauHebdo { get; set; }
@@ -52,19 +50,50 @@ public abstract class Plante
         Hydratation = Math.Max(0, Hydratation - ConsommationEauHebdo); // Max pour éviter les valeurs négatives
         MettreAJourEtatHydratation();
 
+        if (!VerifierSurvie(ensoleillement))
+        {
+            Etat = EtatPlante.Morte;
+            return;
+        }
+
         // Maladie
         if (Etat != EtatPlante.Desechee && rnd.NextDouble() < ProbaMaladie)
-        {
             Etat = EtatPlante.Malade;
-        }
 
         // Croissance
         int bonus = CalculerBonusCroissance(ensoleillement, temp);
         Croissance = Math.Min(100, Croissance + VitesseCroissance + bonus); // Min pour pas dépasser 100
 
+        // Vieillissement
         EsperanceDeVie--;
         if (EsperanceDeVie <= 0)
             Etat = EtatPlante.Morte;
+    }
+
+    private bool VerifierSurvie(int ensoleillement)
+    {
+        int satisfaits = 0;
+        const int totalBesoins = 5;
+
+        // 1. Non malade
+        if (Etat != EtatPlante.Malade) satisfaits++;
+
+        // 2. Non desséché
+        if (Etat != EtatPlante.Desechee) satisfaits++;
+
+        // 3. Ensoleillement
+        if (ensoleillement >= BesoinsLumiere) satisfaits++;
+
+        // 4. Sol préféré
+        if (Parcelle != null && SolPreferee == Parcelle.TypeSol) satisfaits++;
+
+        // 5. Saison de plantation
+        if (SaisonsPlantation.Contains(SaisonMomentPlantation))
+        
+            satisfaits++;
+
+        // Return true si on atteint au moins la moitié 
+        return satisfaits * 2 >= totalBesoins;
     }
 
     protected virtual int CalculerBonusCroissance(int lumiere, int temp)
@@ -124,10 +153,10 @@ public abstract class Plante
         else if (Etat != EtatPlante.Malade)
             Etat = EtatPlante.Saine;
 
-        _semainesDesechees++;
+        semainesDesechees++;
 
         // Si 3 semaines consécutives, la plante meurt
-        if (_semainesDesechees >= 3)
+        if (semainesDesechees >= 3)
             Etat = EtatPlante.Morte;
     }
 }

@@ -82,7 +82,6 @@ public class Partie
             ParcelleEnCours = parcelle;
         }
     }
-
     public void SemaineSuivante()
     {
         Semaine++;
@@ -165,6 +164,5 @@ public class Partie
             parcelle.Temperature = temperature;
         }
     }
-
 }
 

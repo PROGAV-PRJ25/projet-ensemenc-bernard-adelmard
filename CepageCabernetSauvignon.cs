@@ -13,5 +13,11 @@ public class CepageCabernetSauvignon : Plante
         EsperanceDeVie = 120;
         ProductionPotentielle = 25;
         ConsommationEauHebdo = 35;
+        SaisonsPlantation = new List<string>
+        {
+            "Printemps",
+            "Automne"
+        };
+        SaisonMomentPlantation = saisonActuelle;
     }
 }

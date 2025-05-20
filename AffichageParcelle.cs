@@ -356,8 +356,6 @@ public class AffichageParcelle
         menuAction = new MenuChoix(options, "Choisissez une action sur la plante :");
         return options[menuAction.Afficher()];
     }
-
-
     public void AfficherMenuActionGeneral()
     {
         var options = new List<string>

@@ -1,9 +1,9 @@
 public class CepageMerlot : Plante
 {
     public CepageMerlot(string saisonActuelle)
-    : base(saisonActuelle)
+        : base(saisonActuelle)
     {
-        Nom = "Cepage Merlot";
+        Nom = "Cépage Merlot";
         SolPreferee = "argileux";
         VitesseCroissance = 15;
         ProbaMaladie = 0.12;
@@ -13,5 +13,13 @@ public class CepageMerlot : Plante
         EsperanceDeVie = 100;
         ProductionPotentielle = 30;
         ConsommationEauHebdo = 40;
+
+        SaisonsPlantation = new List<string>
+        {
+            "Printemps",
+            "Été"
+        };
+
+        SaisonMomentPlantation = saisonActuelle;
     }
 }

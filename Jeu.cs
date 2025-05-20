@@ -118,14 +118,12 @@ Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
         }
     }
 
-
     private void AfficherRegles()
     {
         Console.Clear();
         Console.WriteLine("\n=== Règles du Jeu ===\n");
         Console.ReadKey();
     }
-
     private void Quitter()
     {
         Console.WriteLine("\nMerci d'avoir joué. À bientôt !\n");
