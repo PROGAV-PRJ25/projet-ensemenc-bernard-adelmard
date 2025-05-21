@@ -70,11 +70,9 @@ public class Partie
         if (typeDeParcelle == 0) // Argileuse
             parcelle = new ParcelleArgileuse(nomParcelle, largeur, hauteur);
         else if (typeDeParcelle == 1)
-        { }
-        //parcelle = new ParcelleGraveleuse(nomParcelle, largeur, hauteur); // à créer
+            parcelle = new ParcelleGraveleuse(nomParcelle, largeur, hauteur);
         else if (typeDeParcelle == 2)
-        { }
-        // parcelle = new ParcelleCalcaire(nomParcelle, largeur, hauteur); // à créer
+            parcelle = new ParcelleCalcaire(nomParcelle, largeur, hauteur);
 
         if (parcelle != null)
         {

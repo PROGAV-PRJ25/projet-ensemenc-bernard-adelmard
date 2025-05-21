@@ -33,7 +33,7 @@ public class AffichageParcelle
                 {
                     if (planter && x == caseSelectionnee[0] && y == caseSelectionnee[1])
                         charDeSelection = "← ";
-                    Console.Write($"🟫{charDeSelection}");
+                    Console.Write($"{parcelle.BlocTerre}{charDeSelection}");
                 }
                 else if (afficherEtat) // Affiche l'état
                 {
@@ -274,7 +274,7 @@ public class AffichageParcelle
                 Console.WriteLine();
             }
 
-            for (int i = 0; i < parcelle.Largeur; i++) Console.Write("🟫");
+            for (int i = 0; i < parcelle.Largeur; i++) Console.Write($"{parcelle.BlocTerre}");
             Console.WriteLine();
             for (int i = 0; i < parcelle.Largeur; i++)
             {

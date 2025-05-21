@@ -13,7 +13,6 @@ public class CepageMerlot : Plante
         EsperanceDeVie = 100;
         ProductionPotentielle = 30;
         ConsommationEauHebdo = 40;
-
         SaisonsPlantation = new List<string>
         {
             "Printemps",

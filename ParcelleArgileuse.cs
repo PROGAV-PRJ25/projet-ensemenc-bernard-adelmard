@@ -1,8 +1,9 @@
 public class ParcelleArgileuse : Parcelle
 {
     public ParcelleArgileuse(string nom, int largeur, int hauteur)
-        : base(nom, largeur, hauteur, "argileux")
+        : base(nom, largeur, hauteur)
     {
-        TypeSol = "Argileux";      
+        TypeSol = "Argileux";
+        BlocTerre = "🟫";
     }
 }
