@@ -83,7 +83,6 @@ public abstract class Plante
     private bool VerifierSurvie(int ensoleillement, int temp)
     {
         int satisfaits = 0;
-        const int totalBesoins = 6;
 
         // 1. Non malade
         if (Etat != EtatPlante.Malade) satisfaits++;
@@ -105,8 +104,8 @@ public abstract class Plante
         if (temp >= TemperaturePreferee.Min && temp <= TemperaturePreferee.Max)
             satisfaits++;
 
-        // Return true si on atteint au moins la moitié 
-        return satisfaits * 2 >= totalBesoins;
+        //
+        return satisfaits >= 2;
     }
 
     protected virtual int CalculerBonusCroissance(int lumiere, int temp)
@@ -136,15 +135,6 @@ public abstract class Plante
 
         return bonus;
     }
-    private bool VerifierBesoins(int lumiere, int temp)
-    {
-        bool eauOK = Hydratation >= BesoinsEau;
-        bool lumOK = lumiere >= BesoinsLumiere;
-        bool tempOK = temp >= TemperaturePreferee.Min &&
-                          temp <= TemperaturePreferee.Max;
-
-        return eauOK && lumOK && tempOK; // Return true si en vie, sinon false
-    }
     public void Arroser(int quantite = 70)
     {
         Hydratation = Math.Min(100, Hydratation + quantite);
@@ -154,14 +144,22 @@ public abstract class Plante
     private void MettreAJourEtatHydratation()
     {
         if (Hydratation < BesoinsEau)
+        {
+            // Plante desséchée
             Etat = EtatPlante.Desechee;
-        else if (Etat != EtatPlante.Malade)
-            Etat = EtatPlante.Saine;
+            semainesDesechees++;
 
-        semainesDesechees++;
-
-        // Si 3 semaines consécutives, la plante meurt
-        if (semainesDesechees >= 3)
-            Etat = EtatPlante.Morte;
+            // 3 semaines consécutives en desséché → mort
+            if (semainesDesechees >= 3)
+                Etat = EtatPlante.Morte;
+        }
+        else
+        {
+            // Hydratation OK → on réinitialise le compteur
+            semainesDesechees = 0;
+            if (Etat != EtatPlante.Malade)
+                Etat = EtatPlante.Saine;
+        }
     }
+
 }

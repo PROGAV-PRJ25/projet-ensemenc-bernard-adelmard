@@ -170,7 +170,6 @@ public class AffichageParcelle
         }
     }
 
-
     public int Afficher(int ligneInitiale = 0)
     {
         int lignes = parcelle.Hauteur;
@@ -323,7 +322,7 @@ public class AffichageParcelle
                 Console.WriteLine($"Hydratation: {selected.Hydratation}% ");
 
                 Console.SetCursorPosition(x, 4);
-                if (selected.BesoinsLumiere > parcelle.Ensoleillement)
+                if (selected.BesoinsLumiere < parcelle.Ensoleillement)
                     Console.WriteLine("Ensoleillement:      : ✅");
                 else
                     Console.WriteLine("Ensoleillement:      : ❌");
