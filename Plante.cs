@@ -138,10 +138,64 @@ public abstract class Plante
 
         return bonus;
     }
-    public void Arroser(int quantite = 70)
+    public void Arroser(Joueur joueur, int quantite = 70)
     {
         Hydratation = Math.Min(100, Hydratation + quantite);
         MettreAJourEtatHydratation();
+
+        if (joueur.ActionsDisponibles > 0)
+        {
+            joueur.UtiliserAction();
+            Console.WriteLine("💧 Vous avez arrosé la plante !");
+        }
+        else
+        {
+            Console.WriteLine("❌ Impossible d'arroser (plus d'actions ou pas de plante).");
+        }
+        Console.ReadKey();
+    }
+
+    public void Traiter(Joueur joueur)
+    {
+        if (joueur.ActionsDisponibles > 0)
+        {
+            if (Etat == Plante.EtatPlante.Malade)
+            {
+                Etat = Plante.EtatPlante.Saine;
+                joueur.UtiliserAction();
+                Console.WriteLine("🩹 Vous avez traité la plante, elle est maintenant saine !");
+            }
+            if (Etat == Plante.EtatPlante.MaladeDesechee)
+            {
+                Etat = Plante.EtatPlante.Desechee;
+                joueur.UtiliserAction();
+                Console.WriteLine("🩹 Vous avez traité la plante, mais elle est toujours en manque d'eau !");
+            }
+            else
+            {
+                Console.WriteLine("ℹ️ La plante n'était pas malade.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("❌ Impossible de traiter (plus d'actions ou pas de plante).");
+        }
+        Console.ReadKey();
+
+    }
+
+    public void Recolter(Joueur joueur, Plante plante)
+    {
+        if (Croissance == 100)
+        {
+            Croissance = 10;
+            joueur.NombreDeRaisins += plante.ProductionPotentielle;
+        }
+        else
+        {
+            Console.WriteLine("La plante n'est pas encore récoltable !");
+            Console.ReadKey();
+        }
     }
 
     private void MettreAJourEtatHydratation()

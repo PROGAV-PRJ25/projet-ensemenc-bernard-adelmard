@@ -20,7 +20,7 @@ public class AffichageParcelle
     public void AfficherParcelleCurseur(int ligneSelectionnee, int lignes, int colonnes, bool afficherEtat, bool planter, int[] caseSelectionnee)
     {
         Console.Clear();
-        Console.WriteLine($"📍 Parcelle : {parcelle.Nom}        📅 Semaine : {partie!.Semaine}");
+        Console.WriteLine($"📍 Parcelle : {parcelle.Nom}        📅 Semaine : {partie!.Semaine}       🍇 Nombre de raisins : {joueur!.NombreDeRaisins}");
         Console.WriteLine();
 
         for (int y = 0; y < lignes; y++)

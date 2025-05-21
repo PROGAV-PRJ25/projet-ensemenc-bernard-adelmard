@@ -102,7 +102,7 @@ public class Partie
                         continue;
 
                     if (parcelle.Pluie) // S'il pleut alors on arrose un peu
-                        plante.Arroser(20);
+                        plante.Hydratation = Math.Min(100, plante.Hydratation + 20);
 
                     plante.AvancerSemaine(parcelle.Ensoleillement, parcelle.Temperature);
 
