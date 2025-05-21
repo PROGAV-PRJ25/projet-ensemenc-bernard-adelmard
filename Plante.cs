@@ -40,7 +40,7 @@ public abstract class Plante
     public int BesoinsEau { get; set; } // Changeable
     public int BesoinsLumiere { get; set; } // Inchangeable mais peut varier en fonction de la météo
     public (int Min, int Max) TemperaturePreferee { get; set; } // Inchangeable mais peut varier en fonction de la météo
-    // Pas malade
+
 
     public Plante(string saisonActuelle)
     {

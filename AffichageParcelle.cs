@@ -302,6 +302,7 @@ public class AffichageParcelle
             }
 
             Console.WriteLine();
+            Console.WriteLine();
             Console.WriteLine("← → pour changer de colonne | Backspace pour quitter");
 
             int x = parcelle.Largeur + 10;
@@ -319,7 +320,7 @@ public class AffichageParcelle
                 Console.WriteLine($"État : {selected!.Etat}");
 
                 Console.SetCursorPosition(x, 3);
-                Console.WriteLine($"Hydratation: {selected.Hydratation}% ");
+                Console.WriteLine($"Hydratation de {selected.Hydratation}%  {(selected.Hydratation > selected.BesoinsEau ? ": ✅" : " : ❌")} ");
 
                 Console.SetCursorPosition(x, 4);
                 if (selected.BesoinsLumiere < parcelle.Ensoleillement)
@@ -328,12 +329,19 @@ public class AffichageParcelle
                     Console.WriteLine("Ensoleillement:      : ❌");
 
                 Console.SetCursorPosition(x, 5);
+                if (selected.TemperaturePreferee.Min < parcelle.Temperature && selected.TemperaturePreferee.Max > parcelle.Temperature)
+                    Console.WriteLine("Température:         : ✅");
+                else
+                    Console.WriteLine("Température:         : ❌");
+
+
+                Console.SetCursorPosition(x, 6);
                 if (selected.SolPreferee == parcelle.TypeSol)
                     Console.WriteLine("Sol préféré          : ✅");
                 else
                     Console.WriteLine("Sol préféré          : ❌");
 
-                Console.SetCursorPosition(x, 6);
+                Console.SetCursorPosition(x, 7);
                 if (selected.EstDansSaisonPreferee)
                     Console.WriteLine("Saison de plantation : ✅");
                 else
