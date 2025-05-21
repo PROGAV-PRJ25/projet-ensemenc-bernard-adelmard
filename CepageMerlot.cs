@@ -6,7 +6,7 @@ public class CepageMerlot : Plante
         Nom = "Cépage Merlot";
         SolPreferee = "Argileux";
         VitesseCroissance = 15;
-        ProbaMaladie = 0.12;
+        ProbaMaladie = 1;
         BesoinsEau = 70;
         BesoinsLumiere = 50;
         TemperaturePreferee = (15, 30);

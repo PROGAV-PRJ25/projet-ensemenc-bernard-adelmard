@@ -54,10 +54,10 @@ public class AffichageParcelle
                                 charDeSelection = "← ";
                             Console.Write($"💧{charDeSelection}");
                             break;
-                        case Plante.EtatPlante.Morte:
+                        case Plante.EtatPlante.MaladeDesechee:
                             if (planter && x == caseSelectionnee[0] && y == caseSelectionnee[1])
                                 charDeSelection = "← ";
-                            Console.Write($"❌{charDeSelection}");
+                            Console.Write($"⚠️{charDeSelection}");
                             break;
                     }
                 }
@@ -285,6 +285,7 @@ public class AffichageParcelle
                     {
                         case Plante.EtatPlante.Saine: Console.Write("✅"); break;
                         case Plante.EtatPlante.Malade: Console.Write("🦠"); break;
+                        case Plante.EtatPlante.MaladeDesechee: Console.Write("⚠️"); break;
                         case Plante.EtatPlante.Desechee: Console.Write("💧"); break;
                         case Plante.EtatPlante.Morte: Console.Write("❌"); break;
                     }

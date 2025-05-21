@@ -21,7 +21,7 @@ public abstract class Plante
     public int VitesseCroissance { get; set; }
     public double ProbaMaladie { get; set; } = 0;
     public int ProductionPotentielle { get; set; }
-    public enum EtatPlante { Saine, Malade, Morte, Desechee, }
+    public enum EtatPlante { Saine, Malade, Morte, Desechee, MaladeDesechee }
     public EtatPlante Etat { get; set; } = EtatPlante.Saine;
     public bool EstSain
     {
@@ -67,8 +67,11 @@ public abstract class Plante
         }
 
         // Maladie
-        if (Etat != EtatPlante.Desechee && rnd.NextDouble() < ProbaMaladie)
-            Etat = EtatPlante.Malade;
+        if (rnd.NextDouble() < ProbaMaladie)
+            if (Etat == EtatPlante.Desechee)
+                Etat = EtatPlante.MaladeDesechee;
+            else
+                Etat = EtatPlante.Malade;
 
         // Croissance
         int bonus = CalculerBonusCroissance(ensoleillement, temp);
@@ -157,9 +160,10 @@ public abstract class Plante
         {
             // Hydratation OK → on réinitialise le compteur
             semainesDesechees = 0;
-            if (Etat != EtatPlante.Malade)
+            if (Etat == EtatPlante.MaladeDesechee)
+                Etat = EtatPlante.Malade;
+            else if (Etat != EtatPlante.Malade)
                 Etat = EtatPlante.Saine;
         }
     }
-
 }

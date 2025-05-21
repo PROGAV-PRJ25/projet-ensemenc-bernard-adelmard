@@ -82,7 +82,6 @@ Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
         BoucleJeu(partieEnCours, joueur, nomSauvegarde);
     }
 
-
     private void ChargerPartie()
     {
         Console.Clear();
@@ -180,7 +179,31 @@ Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
                         break;
 
                     case "Traiter":
-                        // Mettre état sur Saine
+                        var planteMalade = partie.ParcelleEnCours!.MatriceEtat[rang, c];
+                        if (planteMalade != null && joueur.ActionsDisponibles > 0)
+                        {
+                            if (planteMalade.Etat == Plante.EtatPlante.Malade)
+                            {
+                                planteMalade.Etat = Plante.EtatPlante.Saine;
+                                joueur.UtiliserAction();
+                                Console.WriteLine("🩹 Vous avez traité la plante, elle est maintenant saine !");
+                            }
+                            if (planteMalade.Etat == Plante.EtatPlante.MaladeDesechee)
+                            {
+                                planteMalade.Etat = Plante.EtatPlante.Desechee;
+                                joueur.UtiliserAction();
+                                Console.WriteLine("🩹 Vous avez traité la plante, mais elle est toujours en manque d'eau !");
+                            }
+                            else
+                                    {
+                                        Console.WriteLine("ℹ️ La plante n'était pas malade.");
+                                    }
+                        }
+                        else
+                        {
+                            Console.WriteLine("❌ Impossible de traiter (plus d'actions ou pas de plante).");
+                        }
+                        Console.ReadKey();
                         break;
                 }
             }
