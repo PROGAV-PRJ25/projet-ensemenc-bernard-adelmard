@@ -1,15 +1,32 @@
 using System;
 using System.Threading;
 
-public static class AffichageChargement
+public class AffichageChargement
 {
+    private static readonly Random rnd = new Random();
 
-    public static void Afficher(int semaineActuelle, int dureeTotaleMs = 2000)
+    public static void Afficher(int semaineActuelle, Parcelle parcelle)
     {
-        Console.Clear();
-        Console.WriteLine($"⏳ Passage à la semaine {semaineActuelle + 1}…\n");
+        string caractere = "|";
+        string ligne = "|";
 
-        Console.WriteLine("\n✔️ Semaine mise à jour !");
-        Thread.Sleep(800); // Petite pause avant de revenir au jeu
+        for (int i = 0; i <= 40; i++)
+        {
+            Console.Clear();
+            Console.WriteLine($"⏳ Passage à la semaine {semaineActuelle + 1}…\n");
+            Console.WriteLine();
+            Console.WriteLine($"{ligne}");
+            ligne += caractere;
+            Thread.Sleep(40);
+        }
+
+        int proba = 100;
+        if (rnd.Next(0, 101) < proba)
+        {
+            ModeUrgence.Lancer(parcelle);
+        }
+
+        Console.WriteLine("\n✔️ Semaine passée !");
+        Thread.Sleep(1000); // Petite pause avant de revenir au jeu
     }
 }

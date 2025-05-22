@@ -138,7 +138,7 @@ Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
         {
             if (isChargement)
             {
-                AffichageChargement.Afficher(partie.Semaine);
+                AffichageChargement.Afficher(partie.Semaine, partie.ParcelleEnCours!);
                 partie.SemaineSuivante();
                 isChargement = false;
                 continue;
@@ -165,14 +165,17 @@ Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
                 switch (action)
                 {
                     case "Arroser":
-                        plante!.Arroser(joueur);
+                        if (plante != null)
+                            plante.Arroser(joueur);
                         break;
 
                     case "Traiter":
-                        plante!.Traiter(joueur);
+                        if (plante != null)
+                            plante.Traiter(joueur);
                         break;
                     case "Récolter":
-                        plante!.Recolter(joueur, plante);
+                        if (plante != null)
+                            plante.Recolter(joueur, plante);
                         break;
                 }
             }
