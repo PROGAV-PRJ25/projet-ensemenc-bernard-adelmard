@@ -9,6 +9,9 @@ public abstract class Parcelle
     public int Temperature { get; set; } // température actuelle
     public bool Pluie { get; set; } //Pluie ou pas
     public string BlocTerre { get; set; } = "  ";
+    public int NombreActionDispo { get; set; } = 3;
+    public int BonusAction { get; set; } = 0;
+    private const int BaseActions = 3;
 
     protected Parcelle(string nom, int largeur, int hauteur)
     {
@@ -16,5 +19,28 @@ public abstract class Parcelle
         Largeur = largeur;
         Hauteur = hauteur;
         MatriceEtat = new Plante?[hauteur, largeur]; // chaque case = un plant ou vide
+    }
+
+    public void ReinitialiserActions()
+    {
+        {
+            int comptePlantes = 0;
+            for (int y = 0; y < Hauteur; y++)
+            {
+                for (int x = 0; x < Largeur; x++)
+                {
+                    if (MatriceEtat[y, x] != null)
+                        comptePlantes++;
+                }
+            }
+
+            BonusAction = comptePlantes;
+            NombreActionDispo = BaseActions + BonusAction;
+        }
+    }
+
+    public void UtiliserAction()
+    {
+        NombreActionDispo--;
     }
 }

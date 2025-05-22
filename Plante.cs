@@ -138,14 +138,14 @@ public abstract class Plante
 
         return bonus;
     }
-    public void Arroser(Joueur joueur, int quantite = 70)
+    public void Arroser(Parcelle parcelle, int quantite = 70)
     {
         Hydratation = Math.Min(100, Hydratation + quantite);
         MettreAJourEtatHydratation();
 
-        if (joueur.ActionsDisponibles > 0)
+        if (parcelle.NombreActionDispo > 0)
         {
-            joueur.UtiliserAction();
+            parcelle.UtiliserAction();
             Console.WriteLine("💧 Vous avez arrosé la plante !");
         }
         else
@@ -155,20 +155,20 @@ public abstract class Plante
         Console.ReadKey();
     }
 
-    public void Traiter(Joueur joueur)
+    public void Traiter(Parcelle parcelle)
     {
-        if (joueur.ActionsDisponibles > 0)
+        if (parcelle.NombreActionDispo > 0)
         {
             if (Etat == Plante.EtatPlante.Malade)
             {
                 Etat = Plante.EtatPlante.Saine;
-                joueur.UtiliserAction();
+                parcelle.UtiliserAction();
                 Console.WriteLine("🩹 Vous avez traité la plante, elle est maintenant saine !");
             }
             if (Etat == Plante.EtatPlante.MaladeDesechee)
             {
                 Etat = Plante.EtatPlante.Desechee;
-                joueur.UtiliserAction();
+                parcelle.UtiliserAction();
                 Console.WriteLine("🩹 Vous avez traité la plante, mais elle est toujours en manque d'eau !");
             }
             else

@@ -435,7 +435,7 @@ public class AffichageParcelle
 
         Console.SetCursorPosition(x, y + 7);
         Console.ForegroundColor = ConsoleColor.Yellow;
-        Console.WriteLine($"Nombre d'action disponible : {joueur!.ActionsDisponibles}");
+        Console.WriteLine($"Nombre d'action disponible : {parcelle!.NombreActionDispo}");
         Console.ResetColor();
     }
 

@@ -166,12 +166,12 @@ Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
                 {
                     case "Arroser":
                         if (plante != null)
-                            plante.Arroser(joueur);
+                            plante.Arroser(partie.ParcelleEnCours);
                         break;
 
                     case "Traiter":
                         if (plante != null)
-                            plante.Traiter(joueur);
+                            plante.Traiter(partie.ParcelleEnCours);
                         break;
                     case "Récolter":
                         if (plante != null)

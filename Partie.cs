@@ -84,7 +84,7 @@ public class Partie
     {
         Semaine++;
         SaisonActuelle = gestionSaisons.GetSaison(Semaine);
-        Joueur!.ReinitialiserActions();
+        ParcelleEnCours!.ReinitialiserActions();
         foreach (var parcelle in Parcelles)
         {
             int hauteur = parcelle.Hauteur;
@@ -118,7 +118,7 @@ public class Partie
             {
                 ParcelleEnCours.MatriceEtat[ligne, colonne] = plante;
                 plante.Parcelle = ParcelleEnCours;
-                Joueur!.UtiliserAction();
+                ParcelleEnCours!.UtiliserAction();
                 Console.WriteLine($"🌱 {plante.Nom} planté en ({ligne + 1}, {colonne + 1}) !");
             }
             else
