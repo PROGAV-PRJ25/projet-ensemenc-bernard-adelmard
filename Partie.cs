@@ -128,6 +128,21 @@ public class Partie
         }
     }
 
+    public void ToutRécolter(Joueur joueur, Parcelle parcelle)
+    {
+        for (int y = 0; y < parcelle.Hauteur; y++)
+        {
+            for (int x = 0; x < parcelle.Largeur; x++)
+            {
+                var plante = parcelle.MatriceEtat[y, x];
+                if (plante != null && plante.Croissance >= 100)
+                {
+                    plante.Recolter(joueur, plante);
+                }
+            }
+        }
+    }
+
     public void AppliquerMeteo()
     {
         foreach (var parcelle in Parcelles)

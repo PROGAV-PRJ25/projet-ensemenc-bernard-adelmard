@@ -385,12 +385,12 @@ public class AffichageParcelle
     {
         "Planter",
         "Tout récolter",
-        "Renommer la parcelle",
         "Voir toutes les parcelles",
         "Passer à la semaine suivante"
     };
 
-        var menu = new MenuChoix(options, "Action générale :");
+        var menu = new MenuChoix(options, @"Action générale :
+        ");
         int choix = menu.Afficher();      // ← UNE seule lecture
 
         switch (choix)
@@ -398,8 +398,11 @@ public class AffichageParcelle
             case 0: // Planter
                 AfficherPlantage();
                 break;
+            case 1: // Tout récolter
+                partie!.ToutRécolter(joueur!, parcelle);
+                break;
 
-            case 4: // Passer à la semaine suivante
+            case 3: // Passer à la semaine suivante
                 jeu!.isChargement = true;
                 break;
 
