@@ -1,7 +1,5 @@
 public class GestionSaisons
 {
-    private static readonly Random rnd = new Random();
-
     // 0=Printemps,1=Été,2=Automne,3=Hiver
     private readonly int startIndex;
     private readonly int dureeParSaison;

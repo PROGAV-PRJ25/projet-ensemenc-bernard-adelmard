@@ -11,7 +11,7 @@ public abstract class Parcelle
     [JsonProperty("MatriceEtat")]
     private Plante?[][] MatriceEtat_Proxy
     {
-        // conversion multidim → jagged
+        // conversion multidim => jagged
         get
         {
             var rows = new Plante?[Hauteur][];
@@ -23,7 +23,7 @@ public abstract class Parcelle
             }
             return rows;
         }
-        // conversion jagged → multidim
+        // conversion jagged => multidim
         set
         {
             MatriceEtat = new Plante?[Hauteur, Largeur];
