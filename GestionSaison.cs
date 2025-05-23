@@ -1,8 +1,8 @@
 public class GestionSaisons
 {
     // 0=Printemps,1=Été,2=Automne,3=Hiver
-    private readonly int startIndex;
-    private readonly int dureeParSaison;
+    private int startIndex;
+    private int dureeParSaison;
 
     public GestionSaisons(int DureeParSaison = 13)
     {
