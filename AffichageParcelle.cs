@@ -368,8 +368,6 @@ public class AffichageParcelle
     {
         "Arroser",
         "Traiter",
-        "Désherber",
-        "Tuer la plante",
         "Récolter"
     };
 
