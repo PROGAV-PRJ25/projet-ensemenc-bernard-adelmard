@@ -16,10 +16,14 @@ public class GestionSaisons
         {
             switch (startIndex)
             {
-                case 0: return "Printemps";
-                case 1: return "Été";
-                case 2: return "Automne";
-                case 3: return "Hiver";
+                case 0:
+                    return "Printemps";
+                case 1:
+                    return "Été";
+                case 2:
+                    return "Automne";
+                case 3:
+                    return "Hiver";
                 default: throw new InvalidOperationException("Index de saison invalide");
             }
         }
@@ -27,18 +31,19 @@ public class GestionSaisons
 
     public string GetSaison(int semaine)
     {
-        if (semaine < 1)
-            throw new ArgumentException("Doit être ≥ 1", nameof(semaine));
-
         int blocs = (semaine - 1) / dureeParSaison;
         int idxCyclique = (startIndex + blocs) % 4;
 
         switch (idxCyclique)
         {
-            case 0: return "Printemps";
-            case 1: return "Été";
-            case 2: return "Automne";
-            case 3: return "Hiver";
+            case 0:
+                return "Printemps";
+            case 1:
+                return "Été";
+            case 2:
+                return "Automne";
+            case 3:
+                return "Hiver";
             default: throw new InvalidOperationException("Index de saison invalide");
         }
     }
