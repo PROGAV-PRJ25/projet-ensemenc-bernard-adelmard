@@ -10,9 +10,9 @@ public class Jeu
     {
         // Création du menu avec les options et le titre
         string titre = @"
-====================================
-      🍇 Le Jeu Viticole 🍇       
-====================================
+============================================================
+                  🍇 Le Jeu Viticole 🍇       
+============================================================
 Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
 
 ";
@@ -151,6 +151,31 @@ Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
                                                   this);
 
             int rang = affichage.Afficher(dernierRang);
+            if (rang == -1)
+            {
+                string actionGen = affichage.AfficherMenuActionGeneral();
+                if (actionGen == "Voir toutes les parcelles (Acheter)")
+                {
+                    partie.AfficherToutesLesParcelles(joueur);
+                    continue;
+                }
+                if (actionGen == "Passer à la semaine suivante")
+                {
+                    isChargement = true;
+                    continue;
+                }
+                if (actionGen == "Tout récolter")
+                {
+                    partie.ToutRécolter(joueur, partie.ParcelleEnCours!);
+                    continue;
+                }
+                if (actionGen == "Planter")
+                {
+                    affichage.AfficherPlantage();
+                    continue;
+                }
+                rang = 0;
+            }
             dernierRang = rang;
 
             if (isChargement)
@@ -182,4 +207,7 @@ Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
             //SauvegardeManager.Sauvegarder(partie, nomSauvegarde);
         }
     }
+
 }
+
+

@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 public class Partie
 {
     public Joueur? Joueur { get; set; }
@@ -8,6 +10,8 @@ public class Partie
     public Parcelle? ParcelleEnCours { get; set; }
     public MenuChoix ChoixTypeParcelle { get; set; } = new MenuChoix(new List<string> { "Argileuse", "Graveleux", "Calcaire" }, @"Quel type de parcelle voulez-vous créer pour commencer la partie ?
     "); // Création du menu
+
+    public int CoutSurface = 5;
 
     private static readonly Random rnd = new Random();
 
@@ -32,7 +36,7 @@ public class Partie
     public Partie() { }
 
     // Méthodes
-    private void InitialiserParcelles(int typeDeParcelle)
+    private Parcelle InitialiserParcelles(int typeDeParcelle)
     {
         Parcelle? parcelle = null;
 
@@ -71,7 +75,7 @@ public class Partie
             parcelle = new ParcelleArgileuse(nomParcelle, largeur, hauteur);
         else if (typeDeParcelle == 1)
             parcelle = new ParcelleGraveleuse(nomParcelle, largeur, hauteur);
-        else if (typeDeParcelle == 2)
+        else
             parcelle = new ParcelleCalcaire(nomParcelle, largeur, hauteur);
 
         if (parcelle != null)
@@ -79,6 +83,8 @@ public class Partie
             Parcelles.Add(parcelle);
             ParcelleEnCours = parcelle;
         }
+        return parcelle!;
+
     }
     public void SemaineSuivante()
     {
@@ -176,6 +182,89 @@ public class Partie
             parcelle.Ensoleillement = ensoleillement;
             parcelle.Temperature = temperature;
         }
+    }
+    private void AcheterParcelle(Joueur joueur)
+    {
+        Console.Clear();
+        Console.WriteLine("== Achat d'une nouvelle parcelle ==");
+        // Choix du type de sol
+        int type = new MenuChoix(
+            new List<string> { "Argileuse", "Graveleux", "Calcaire" }, "Type de sol :"
+        ).Afficher();
+
+        // Nom de la parcelle
+        string nom;
+        do
+        {
+            Console.Clear();
+            Console.Write("Nom de la parcelle (max 30 chars) : ");
+            nom = Console.ReadLine()?.Trim() ?? "";
+        } while (string.IsNullOrWhiteSpace(nom) || nom.Length > 30);
+
+        // 3) Dimensions
+        int largeur, hauteur;
+        do
+        {
+            Console.Write("Largeur (4–10) : ");
+        } while (!int.TryParse(Console.ReadLine(), out largeur) || largeur < 4 || largeur > 10);
+        do
+        {
+            Console.Write("Hauteur (4–10) : ");
+        } while (!int.TryParse(Console.ReadLine(), out hauteur) || hauteur < 4 || hauteur > 10);
+
+        // 4) Calcul du coût
+        int cout = largeur * hauteur * CoutSurface;
+        if (joueur.NombreDeRaisins < cout)
+        {
+            Console.WriteLine($"❌ Il vous faut {cout} NombreDeRaisins, vous n'en avez que {joueur.NombreDeRaisins}.");
+            Console.ReadKey();
+            return;
+        }
+
+        // 5) Débit et création
+        joueur.NombreDeRaisins -= cout;
+        Parcelle nouvelle;
+        switch (type)
+        {
+            case 0:
+                nouvelle = new ParcelleArgileuse(nom, largeur, hauteur);
+                break;
+            case 1:
+                nouvelle = new ParcelleGraveleuse(nom, largeur, hauteur);
+                break;
+            default:
+                nouvelle = new ParcelleCalcaire(nom, largeur, hauteur);
+                break;
+        }
+
+        Parcelles.Add(nouvelle);
+        ParcelleEnCours = nouvelle;
+
+        Console.WriteLine($"✅ Parcelle achetée pour {cout} NombreDeRaisins !");
+        Console.ReadKey();
+    }
+
+    public void AfficherToutesLesParcelles(Joueur joueur)
+    {
+        var options = new List<string>();
+        foreach (var parcelle in Parcelles)
+        {
+            options.Add(
+                $"{parcelle.BlocTerre} {parcelle.Nom}  –  Sol : {parcelle.TypeSol}  –  Taille : {parcelle.Largeur}×{parcelle.Hauteur}"
+            );
+        }
+        options.Add("Acheter une parcelle");
+
+        var menu = new MenuChoix(
+            options,
+            "Sélectionnez une parcelle ou achetez-en une nouvelle :"
+        );
+        int choix = menu.Afficher();
+
+        if (choix < Parcelles.Count)
+            ParcelleEnCours = Parcelles[choix];
+        else
+            AcheterParcelle(joueur);
     }
 }
 

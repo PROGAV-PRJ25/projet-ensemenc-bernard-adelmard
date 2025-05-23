@@ -13,7 +13,7 @@ public class ModeUrgence
         (ConsoleKey.RightArrow, "→"),
     }; // J'ai découvert cette nouvelle manière de tirer au hasard, c'est plus pratique que de choisir un index aléatoire
 
-    public static void Lancer(Parcelle parcelle,int rounds = 10, int barLength = 20, int speedMs = 30)
+    public static void Lancer(Parcelle parcelle, int rounds = 10, int barLength = 20, int speedMs = 30)
     {
         int score = 0;
 

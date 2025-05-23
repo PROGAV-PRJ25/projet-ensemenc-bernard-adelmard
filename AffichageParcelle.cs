@@ -226,12 +226,8 @@ public class AffichageParcelle
                     }
                     else if (key.Key == ConsoleKey.Spacebar)
                     {
-                        AfficherMenuActionGeneral();
-
-                        if (jeu!.isChargement)
-                            return ligneSelectionnee;
-
                         toucheDetectee = true;
+                        return -1;
                     }
                 }
 
@@ -379,13 +375,13 @@ public class AffichageParcelle
         menuAction = new MenuChoix(options, "Choisissez une action sur la plante :");
         return options[menuAction.Afficher()];
     }
-    public void AfficherMenuActionGeneral()
+    public string AfficherMenuActionGeneral()
     {
         var options = new List<string>
     {
         "Planter",
         "Tout récolter",
-        "Voir toutes les parcelles",
+        "Voir toutes les parcelles (Acheter)",
         "Passer à la semaine suivante"
     };
 
@@ -396,18 +392,16 @@ public class AffichageParcelle
         switch (choix)
         {
             case 0: // Planter
-                AfficherPlantage();
-                break;
+                return "Planter";
             case 1: // Tout récolter
-                partie!.ToutRécolter(joueur!, parcelle);
-                break;
-
+                return "Tout récolter";
+            case 2: // Voir toutes les parcelles
+                return "Voir toutes les parcelles (Acheter)";
             case 3: // Passer à la semaine suivante
-                jeu!.isChargement = true;
-                break;
+                return "Passer à la semaine suivante";
 
             default:
-                break;
+                return "";
         }
     }
 
