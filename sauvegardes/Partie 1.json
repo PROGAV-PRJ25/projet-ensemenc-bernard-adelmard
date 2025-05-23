@@ -1,0 +1,315 @@
+{
+  "gestionSaisons": {
+    "SaisonDeDepart": "Printemps"
+  },
+  "CoutSurface": 5,
+  "Joueur": {
+    "Nom": "Partie 1",
+    "NombreDeRaisins": 0
+  },
+  "Parcelles": [
+    {
+      "$type": "ParcelleArgileuse, projet-ensemenc-bernard-adelmard",
+      "Nom": "MaParcelle",
+      "Largeur": 5,
+      "Hauteur": 5,
+      "TypeSol": "Argileux",
+      "Ensoleillement": 32,
+      "Temperature": 20,
+      "Pluie": false,
+      "BlocTerre": "🟫",
+      "NombreActionDispo": 7,
+      "BonusAction": 4,
+      "MatriceEtat": [
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          {
+            "$type": "CepageCabernetSauvignon, projet-ensemenc-bernard-adelmard",
+            "Nom": "Cepage Cabernet Sauvignon",
+            "EsperanceDeVie": 117,
+            "Hydratation": 15,
+            "ConsommationEauHebdo": 35,
+            "SaisonMomentPlantation": "Printemps",
+            "EstDansSaisonPreferee": true,
+            "VitesseCroissance": 13,
+            "ProbaMaladie": 0.08,
+            "ProductionPotentielle": 25,
+            "Etat": 3,
+            "EstSain": false,
+            "Croissance": 39,
+            "SaisonsPlantation": [
+              "Printemps",
+              "Automne"
+            ],
+            "SolPreferee": "Graveleux",
+            "BesoinsEau": 60,
+            "BesoinsLumiere": 60,
+            "TemperaturePreferee": {
+              "Item1": 14,
+              "Item2": 32
+            }
+          },
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          {
+            "$type": "CepageCabernetSauvignon, projet-ensemenc-bernard-adelmard",
+            "Nom": "Cepage Cabernet Sauvignon",
+            "EsperanceDeVie": 117,
+            "Hydratation": 65,
+            "ConsommationEauHebdo": 35,
+            "SaisonMomentPlantation": "Printemps",
+            "EstDansSaisonPreferee": true,
+            "VitesseCroissance": 13,
+            "ProbaMaladie": 0.08,
+            "ProductionPotentielle": 25,
+            "Etat": 0,
+            "EstSain": true,
+            "Croissance": 39,
+            "SaisonsPlantation": [
+              "Printemps",
+              "Automne"
+            ],
+            "SolPreferee": "Graveleux",
+            "BesoinsEau": 60,
+            "BesoinsLumiere": 60,
+            "TemperaturePreferee": {
+              "Item1": 14,
+              "Item2": 32
+            }
+          },
+          {
+            "$type": "CepageMerlot, projet-ensemenc-bernard-adelmard",
+            "Nom": "Cépage Merlot",
+            "EsperanceDeVie": 97,
+            "Hydratation": 60,
+            "ConsommationEauHebdo": 40,
+            "SaisonMomentPlantation": "Printemps",
+            "EstDansSaisonPreferee": true,
+            "VitesseCroissance": 15,
+            "ProbaMaladie": 0.12,
+            "ProductionPotentielle": 30,
+            "Etat": 4,
+            "EstSain": false,
+            "Croissance": 55,
+            "SaisonsPlantation": [
+              "Printemps",
+              "Été"
+            ],
+            "SolPreferee": "Argileux",
+            "BesoinsEau": 70,
+            "BesoinsLumiere": 50,
+            "TemperaturePreferee": {
+              "Item1": 15,
+              "Item2": 30
+            }
+          },
+          {
+            "$type": "CepageCabernetSauvignon, projet-ensemenc-bernard-adelmard",
+            "Nom": "Cepage Cabernet Sauvignon",
+            "EsperanceDeVie": 119,
+            "Hydratation": 65,
+            "ConsommationEauHebdo": 35,
+            "SaisonMomentPlantation": "Printemps",
+            "EstDansSaisonPreferee": true,
+            "VitesseCroissance": 13,
+            "ProbaMaladie": 0.08,
+            "ProductionPotentielle": 25,
+            "Etat": 0,
+            "EstSain": true,
+            "Croissance": 13,
+            "SaisonsPlantation": [
+              "Printemps",
+              "Automne"
+            ],
+            "SolPreferee": "Graveleux",
+            "BesoinsEau": 60,
+            "BesoinsLumiere": 60,
+            "TemperaturePreferee": {
+              "Item1": 14,
+              "Item2": 32
+            }
+          },
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    }
+  ],
+  "Semaine": 4,
+  "SaisonActuelle": "Printemps",
+  "ParcelleEnCours": {
+    "$type": "ParcelleArgileuse, projet-ensemenc-bernard-adelmard",
+    "Nom": "MaParcelle",
+    "Largeur": 5,
+    "Hauteur": 5,
+    "TypeSol": "Argileux",
+    "Ensoleillement": 32,
+    "Temperature": 20,
+    "Pluie": false,
+    "BlocTerre": "🟫",
+    "NombreActionDispo": 7,
+    "BonusAction": 4,
+    "MatriceEtat": [
+      [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      [
+        null,
+        {
+          "$type": "CepageCabernetSauvignon, projet-ensemenc-bernard-adelmard",
+          "Nom": "Cepage Cabernet Sauvignon",
+          "EsperanceDeVie": 117,
+          "Hydratation": 15,
+          "ConsommationEauHebdo": 35,
+          "SaisonMomentPlantation": "Printemps",
+          "EstDansSaisonPreferee": true,
+          "VitesseCroissance": 13,
+          "ProbaMaladie": 0.08,
+          "ProductionPotentielle": 25,
+          "Etat": 3,
+          "EstSain": false,
+          "Croissance": 39,
+          "SaisonsPlantation": [
+            "Printemps",
+            "Automne"
+          ],
+          "SolPreferee": "Graveleux",
+          "BesoinsEau": 60,
+          "BesoinsLumiere": 60,
+          "TemperaturePreferee": {
+            "Item1": 14,
+            "Item2": 32
+          }
+        },
+        null,
+        null,
+        null
+      ],
+      [
+        null,
+        {
+          "$type": "CepageCabernetSauvignon, projet-ensemenc-bernard-adelmard",
+          "Nom": "Cepage Cabernet Sauvignon",
+          "EsperanceDeVie": 117,
+          "Hydratation": 65,
+          "ConsommationEauHebdo": 35,
+          "SaisonMomentPlantation": "Printemps",
+          "EstDansSaisonPreferee": true,
+          "VitesseCroissance": 13,
+          "ProbaMaladie": 0.08,
+          "ProductionPotentielle": 25,
+          "Etat": 0,
+          "EstSain": true,
+          "Croissance": 39,
+          "SaisonsPlantation": [
+            "Printemps",
+            "Automne"
+          ],
+          "SolPreferee": "Graveleux",
+          "BesoinsEau": 60,
+          "BesoinsLumiere": 60,
+          "TemperaturePreferee": {
+            "Item1": 14,
+            "Item2": 32
+          }
+        },
+        {
+          "$type": "CepageMerlot, projet-ensemenc-bernard-adelmard",
+          "Nom": "Cépage Merlot",
+          "EsperanceDeVie": 97,
+          "Hydratation": 60,
+          "ConsommationEauHebdo": 40,
+          "SaisonMomentPlantation": "Printemps",
+          "EstDansSaisonPreferee": true,
+          "VitesseCroissance": 15,
+          "ProbaMaladie": 0.12,
+          "ProductionPotentielle": 30,
+          "Etat": 4,
+          "EstSain": false,
+          "Croissance": 55,
+          "SaisonsPlantation": [
+            "Printemps",
+            "Été"
+          ],
+          "SolPreferee": "Argileux",
+          "BesoinsEau": 70,
+          "BesoinsLumiere": 50,
+          "TemperaturePreferee": {
+            "Item1": 15,
+            "Item2": 30
+          }
+        },
+        {
+          "$type": "CepageCabernetSauvignon, projet-ensemenc-bernard-adelmard",
+          "Nom": "Cepage Cabernet Sauvignon",
+          "EsperanceDeVie": 119,
+          "Hydratation": 65,
+          "ConsommationEauHebdo": 35,
+          "SaisonMomentPlantation": "Printemps",
+          "EstDansSaisonPreferee": true,
+          "VitesseCroissance": 13,
+          "ProbaMaladie": 0.08,
+          "ProductionPotentielle": 25,
+          "Etat": 0,
+          "EstSain": true,
+          "Croissance": 13,
+          "SaisonsPlantation": [
+            "Printemps",
+            "Automne"
+          ],
+          "SolPreferee": "Graveleux",
+          "BesoinsEau": 60,
+          "BesoinsLumiere": 60,
+          "TemperaturePreferee": {
+            "Item1": 14,
+            "Item2": 32
+          }
+        },
+        null
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    ]
+  },
+  "ChoixTypeParcelle": {}
+}

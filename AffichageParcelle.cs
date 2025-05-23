@@ -107,7 +107,7 @@ public class AffichageParcelle
             Console.SetCursorPosition(0, positionY);
             Console.WriteLine("← ↑ ↓ → pour se déplacer | Entrée pour planter");
             Console.SetCursorPosition(0, positionY + 1);
-            Console.WriteLine("1 à 9 pour choisir la plante | Retour : Backspace");
+            Console.WriteLine("1 à 5 pour choisir la plante | Retour : Backspace");
 
             int attente = 0;
             bool toucheDetectee = false;
@@ -301,6 +301,7 @@ public class AffichageParcelle
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine("← → pour changer de colonne | Backspace pour quitter");
+            Console.WriteLine("Entrée pour choisir une action sur la plante sélectionnée.");
 
             int x = parcelle.Largeur + 10;
             var selected = parcelle.MatriceEtat[y, colonneSelectionnee];
