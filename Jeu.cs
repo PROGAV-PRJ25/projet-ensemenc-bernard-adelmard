@@ -200,11 +200,27 @@ Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
                     partie.ToutRécolter(joueur, partie.ParcelleEnCours!);
                     continue;
                 }
-                if (actionGen == "Planter")
+                if (actionGen == "Sauvegarder la partie")
                 {
-                    affichage.AfficherPlantage();
+                    SauvegardeManager.Sauvegarder(partie, nomSauvegarde);
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Partie sauvegardée avec succès !");
+                    Console.ResetColor();
+                    Thread.Sleep(1000);
                     continue;
                 }
+                if (actionGen == "Retour au menu principal")
+                {
+                    enJeu = false;
+                    isPartieEnCours = false;
+                    return;
+                }
+                if (actionGen == "Planter")
+                    {
+                        affichage.AfficherPlantage();
+                        continue;
+                    }
                 rang = 0;
             }
             dernierRang = rang;
@@ -233,7 +249,6 @@ Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
                         if (plante != null)
                         {
                             plante.Recolter(joueur, plante);
-                            SauvegardeManager.Sauvegarder(partie, nomSauvegarde);
                         }
 
                         break;
@@ -242,5 +257,3 @@ Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
         }
     }
 }
-
-

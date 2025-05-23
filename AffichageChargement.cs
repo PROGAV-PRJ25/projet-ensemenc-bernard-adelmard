@@ -20,7 +20,7 @@ public class AffichageChargement
             Thread.Sleep(40);
         }
 
-        int proba = 17;
+        int proba = 26;
         if (rnd.Next(0, 101) < proba)
         {
             ModeUrgence.Lancer(parcelle);

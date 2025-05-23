@@ -382,7 +382,9 @@ public class AffichageParcelle
         "Planter",
         "Tout récolter",
         "Voir toutes les parcelles (Acheter)",
-        "Passer à la semaine suivante"
+        "Sauvegarder la partie",
+        "Passer à la semaine suivante",
+        "Retour au menu principal"
     };
 
         var menu = new MenuChoix(options, @"Action générale :
@@ -397,8 +399,12 @@ public class AffichageParcelle
                 return "Tout récolter";
             case 2: // Voir toutes les parcelles
                 return "Voir toutes les parcelles (Acheter)";
-            case 3: // Passer à la semaine suivante
+            case 3: // save
+                return "Sauvegarder la partie";
+            case 4: // Passer à la semaine suivante
                 return "Passer à la semaine suivante";
+            case 5:
+                return "Retour au menu principal";
 
             default:
                 return "";

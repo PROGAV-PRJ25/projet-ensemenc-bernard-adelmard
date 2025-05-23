@@ -15,7 +15,7 @@ public class Partie
 
     private static readonly Random rnd = new Random();
 
-    // Constructeur mis à jour pour nouvelle partie seulement
+    // Constructeur pour nouvelle partie seulement
     public static Partie CreerNouvellePartie(Joueur joueur)
     {
         var p = new Partie();
@@ -23,7 +23,7 @@ public class Partie
 
         // Initialise le gestionnaire avec 13 semaines/saison
         p.gestionSaisons = new GestionSaisons(13);
-        // 2) Tire et stocke la saison de départ
+        // Tire et stocke la saison de départ
         p.SaisonActuelle = p.gestionSaisons.SaisonDeDepart;
         Console.WriteLine($"Saison de départ : {p.SaisonActuelle}");
 
@@ -189,8 +189,7 @@ public class Partie
         Console.WriteLine("== Achat d'une nouvelle parcelle ==");
         // Choix du type de sol
         int type = new MenuChoix(
-            new List<string> { "Argileuse", "Graveleux", "Calcaire" }, "Type de sol :"
-        ).Afficher();
+            new List<string> { "Argileuse", "Graveleux", "Calcaire" }, "Type de sol :").Afficher();
 
         // Nom de la parcelle
         string nom;

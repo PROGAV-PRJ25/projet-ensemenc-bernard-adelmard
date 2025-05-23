@@ -1,6 +1,6 @@
 {
   "gestionSaisons": {
-    "SaisonDeDepart": "Automne"
+    "SaisonDeDepart": "Hiver"
   },
   "CoutSurface": 5,
   "Joueur": {
@@ -14,8 +14,8 @@
       "Largeur": 5,
       "Hauteur": 5,
       "TypeSol": "Argileux",
-      "Ensoleillement": 81,
-      "Temperature": 14,
+      "Ensoleillement": 93,
+      "Temperature": 36,
       "Pluie": false,
       "BlocTerre": "🟫",
       "NombreActionDispo": 4,
@@ -59,8 +59,8 @@
       ]
     }
   ],
-  "Semaine": 6,
-  "SaisonActuelle": "Automne",
+  "Semaine": 7,
+  "SaisonActuelle": "Hiver",
   "ParcelleEnCours": {
     "$type": "ParcelleArgileuse, projet-ensemenc-bernard-adelmard",
     "Nom": "fqdfq",
@@ -78,6 +78,7 @@
         {
           "$type": "CepageMerlot, projet-ensemenc-bernard-adelmard",
           "Nom": "Cépage Merlot",
+          "Parcelle": null,
           "EsperanceDeVie": 100,
           "Hydratation": 100,
           "ConsommationEauHebdo": 40,

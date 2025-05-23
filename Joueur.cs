@@ -7,15 +7,4 @@ public class Joueur
     {
         Nom = nom;
     }
-
-    public void Depenser(int montant)
-    {
-        NombreDeRaisins -= montant;
-    }
-
-
-    public void AjouterRaisins(int nbRaisins)
-    {
-        NombreDeRaisins += nbRaisins;
-    }
 }
