@@ -200,14 +200,16 @@ Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
                         break;
                     case "Récolter":
                         if (plante != null)
+                        {
                             plante.Recolter(joueur, plante);
+                            SauvegardeManager.Sauvegarder(partie, nomSauvegarde);
+                        }
+
                         break;
                 }
             }
-            //SauvegardeManager.Sauvegarder(partie, nomSauvegarde);
         }
     }
-
 }
 
 

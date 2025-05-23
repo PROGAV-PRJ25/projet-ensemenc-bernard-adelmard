@@ -11,7 +11,9 @@ public static class SauvegardeManager
         var json = JsonConvert.SerializeObject(partie, Formatting.Indented,
             new JsonSerializerSettings
             {
-                TypeNameHandling = TypeNameHandling.Auto
+                TypeNameHandling = TypeNameHandling.Auto,
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+
             });
 
         Directory.CreateDirectory("sauvegardes");
@@ -19,7 +21,7 @@ public static class SauvegardeManager
         Console.WriteLine("✅ Partie sauvegardée !");
     }
 
-    // Permet de lister les fichiers de la sauvegarde (nathan, claire, etc)
+    // Permet de lister les fichiers de la sauvegarde 
     public static List<string> ListerSauvegardesDisponibles()
     {
         var fichiers = Directory.GetFiles("sauvegardes", "*.json");
@@ -41,7 +43,8 @@ public static class SauvegardeManager
         string json = File.ReadAllText(chemin);
         return JsonConvert.DeserializeObject<Partie>(json, new JsonSerializerSettings
         {
-            TypeNameHandling = TypeNameHandling.Auto
+            TypeNameHandling = TypeNameHandling.Auto,
+            ReferenceLoopHandling = ReferenceLoopHandling.Ignore
         });
     }
 
