@@ -120,9 +120,40 @@ Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
     private void AfficherRegles()
     {
         Console.Clear();
-        Console.WriteLine("\n=== Règles du Jeu ===\n");
+        Console.WriteLine("\n=== Règles du Jeu Viticole ===\n");
+        Console.WriteLine("🎯 Objectif :");
+        Console.WriteLine("  • Faire grandir vos cépages, récolter du raisin et acheter de nouvelles parcelles.");
+        Console.WriteLine();
+        Console.WriteLine("⌛ Déroulement :");
+        Console.WriteLine("  • Chaque semaine :");
+        Console.WriteLine("    – Météo aléatoire (pluie / ensoleillement / température).");
+        Console.WriteLine("    – Vos plantes consomment de l’eau et poussent selon leurs besoins.");
+        Console.WriteLine("    – Vos plantes ont des bonus positifs ou négatifs en fonctions da la satisfaction de chaque besoins.");
+        Console.WriteLine("    – Vous disposez d'un nombre limité d'actions.");
+        Console.WriteLine();
+        Console.WriteLine("🛠️ Actions disponibles :");
+        Console.WriteLine("  • Planter   : Choisissez un cépage et un emplacement vide.");
+        Console.WriteLine("  • Arroser   : +70% hydratation (+ 20% si pluie).");
+        Console.WriteLine("  • Traiter   : Soigne une plante malade.");
+        Console.WriteLine("  • Récolter  : Si croissance = 100%, vous gagnez des raisins.");
+        Console.WriteLine("  • Tout récolter : Récolte globale de la parcelle.");
+        Console.WriteLine("  • Acheter   : Dépensez des raisins pour une nouvelle parcelle.");
+        Console.WriteLine();
+        Console.WriteLine("🌦️ Saison & météo :");
+        Console.WriteLine("  • 1 saison = 13 semaines (Printemps, Été, Automne, Hiver).");
+        Console.WriteLine("  • Vos cépages ont une fenêtre optimale de plantation.");
+        Console.WriteLine();
+        Console.WriteLine("⚠️ Mode Urgence (attaques d’oiseaux) :");
+        Console.WriteLine("  • QTE rapide à réussir sous peine de perdre 50% de vos récoltes.");
+        Console.WriteLine();
+        Console.WriteLine("💀​ Conditions de survie d'une plante :");
+        Console.WriteLine("  • Si 50% de ses besoins ne sont pas respectés, la planate meurt.");
+        Console.WriteLine("  • Si la plante est malade ou déséchée depuis 3 jours consécutifs, elle meurt.");
+        Console.WriteLine();
+        Console.WriteLine("Appuyez sur une touche pour revenir au menu...");
         Console.ReadKey();
     }
+
     private void Quitter()
     {
         Console.WriteLine("\nMerci d'avoir joué. À bientôt !\n");

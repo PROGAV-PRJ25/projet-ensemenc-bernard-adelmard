@@ -32,7 +32,6 @@ public abstract class Parcelle
                     MatriceEtat[y, x] = value[y][x];
         }
     }
-    // …
 
     public string? TypeSol { get; set; }
     public int Ensoleillement { get; set; } // 0 à 100 (Ensoleillement actuelle, qui changera via la météo)

@@ -4,6 +4,7 @@ public abstract class Plante
     public string? Nom { get; set; }
     public Parcelle Parcelle { get; set; } = null!;
     private int semainesDesechees = 0;
+    private int semainesMalade = 0;
     public int EsperanceDeVie { get; set; }
     public int Hydratation { get; set; } = 100;
     public int ConsommationEauHebdo { get; set; }
@@ -81,6 +82,20 @@ public abstract class Plante
         EsperanceDeVie--;
         if (EsperanceDeVie <= 0)
             Etat = EtatPlante.Morte;
+
+        if (Etat == EtatPlante.Malade || Etat == EtatPlante.MaladeDesechee)
+        {
+            semainesMalade++;
+            if (semainesMalade >= 3)
+            {
+                Etat = EtatPlante.Morte;
+                return;
+            }
+        }
+        else
+        {
+            semainesMalade = 0;
+        }
     }
 
     private bool VerifierSurvie(int ensoleillement, int temp)
@@ -108,7 +123,7 @@ public abstract class Plante
             satisfaits++;
 
         //
-        return satisfaits >= 2;
+        return satisfaits >= 3;
     }
 
     protected virtual int CalculerBonusCroissance(int lumiere, int temp)
