@@ -362,7 +362,7 @@ public class AffichageParcelle
         return null;
     }
 
-    public string AfficherMenuActionDetail(int x) // Méthode qui renvoi le string de l'action
+    public string AfficherMenuActionDetail() // Méthode qui renvoi le string de l'action
     {
         List<string> options = new List<string>
     {

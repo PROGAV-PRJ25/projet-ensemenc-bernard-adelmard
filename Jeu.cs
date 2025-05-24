@@ -231,7 +231,7 @@ Utilisez les flèches ↑ ↓ pour naviguer, Entrée pour valider.
             int? col = affichage.AfficherDetailRangee(rang);
             if (col is int c)
             {
-                string action = affichage.AfficherMenuActionDetail(c);
+                string action = affichage.AfficherMenuActionDetail();
                 // Récupère la plante sélectionnée
                 var plante = partie.ParcelleEnCours!.MatriceEtat[rang, c];
                 switch (action)
