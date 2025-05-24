@@ -3,7 +3,7 @@ using System.Threading;
 
 public class AffichageChargement
 {
-    private static readonly Random rnd = new Random();
+    private static Random rnd = new Random();
 
     public static void Afficher(int semaineActuelle, Parcelle parcelle)
     {

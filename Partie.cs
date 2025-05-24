@@ -25,7 +25,6 @@ public class Partie
         p.gestionSaisons = new GestionSaisons(13);
         // Tire et stocke la saison de départ
         p.SaisonActuelle = p.gestionSaisons.SaisonDeDepart;
-        Console.WriteLine($"Saison de départ : {p.SaisonActuelle}");
 
         int choix = p.ChoixTypeParcelle.Afficher();
         p.InitialiserParcelles(choix);
@@ -186,7 +185,7 @@ public class Partie
     private void AcheterParcelle(Joueur joueur)
     {
         Console.Clear();
-        Console.WriteLine("== Achat d'une nouvelle parcelle ==");
+        Console.WriteLine("=== Achat d'une nouvelle parcelle ===");
         // Choix du type de sol
         int type = new MenuChoix(
             new List<string> { "Argileuse", "Graveleux", "Calcaire" }, "Type de sol :").Afficher();
@@ -200,7 +199,7 @@ public class Partie
             nom = Console.ReadLine()?.Trim() ?? "";
         } while (string.IsNullOrWhiteSpace(nom) || nom.Length > 30);
 
-        // 3) Dimensions
+        // Dimensions
         int largeur, hauteur;
         do
         {
@@ -211,7 +210,7 @@ public class Partie
             Console.Write("Hauteur (4–10) : ");
         } while (!int.TryParse(Console.ReadLine(), out hauteur) || hauteur < 4 || hauteur > 10);
 
-        // 4) Calcul du coût
+        // Calcul du coût
         int cout = largeur * hauteur * CoutSurface;
         if (joueur.NombreDeRaisins < cout)
         {
@@ -220,7 +219,7 @@ public class Partie
             return;
         }
 
-        // 5) Débit et création
+        // Débit et création
         joueur.NombreDeRaisins -= cout;
         Parcelle nouvelle;
         switch (type)

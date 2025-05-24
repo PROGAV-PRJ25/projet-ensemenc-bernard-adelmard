@@ -3,9 +3,9 @@ using System.Threading;
 
 public class ModeUrgence
 {
-    private static readonly Random rnd = new Random();
+    private static Random rnd = new Random();
     // Table des Fleches et leurs symboles
-    private static readonly (ConsoleKey key, string symbole)[] Fleches = new[]
+    private static (ConsoleKey key, string symbole)[] Fleches = new[]
     {
         (ConsoleKey.UpArrow,    "↑"),
         (ConsoleKey.DownArrow,  "↓"),
